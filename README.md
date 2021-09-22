@@ -1,108 +1,172 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+# Auto Tints - Automotive Window Tinting Supplies
 
-Welcome USER_NAME,
+![AmIResponsive]()
 
-This is the Code Institute student template for Gitpod. We have preinstalled all of the tools you need to get started. It's perfectly ok to use this template as the basis for your project submissions.
+[View Project on Heroku]()
 
-You can safely delete this README.md file, or change it for your own project. Please do read it at least once, though! It contains some important information about Gitpod and the extensions we use. Some of this information has been updated since the video content was created. The last update to this file was: **September 1, 2021**
 
-## Gitpod Reminders
+The goal of this project is to create an __online store__ which offers automotive window tinting supplies and tools.
 
-To run a frontend (HTML, CSS, Javascript only) application in Gitpod, in the terminal, type:
+# Table of Contents
+1. [Overview/Description](#1-overviewdescription)
+2. [User Stories](#2-user-stories)
+3. [User Experience (UX)](#3-user-experienceux)
+    * [Strategy Plane](#strategy-plane)
+    * [Scope Plane](#scope-plane)
+    * [Structure Plane](#structure-plane)
+    * [Skeleton Plane](#skeleton-plane)
+    * [Surface Plane](#surface-plane)
+4. [Features](#4-features)
+    * [Future Features](#future-features)
+5. [Technologies Used](#5-technologies-used)
+6. [Trials & Testing](#6-trials--testing)
+7. [Problem Solving](#7-problem-areas--solutions)
+8. [Code Validation](#8-code-validation)
+9. [Website Deployment](#9-website-deployment)
+10. [Credits & Acknowledgments](#10-credits--acknowledgments)
+11. [Repository Support](#11-repository-support)
 
-`python3 -m http.server`
+# 1: Overview/Description
 
-A blue button should appear to click: _Make Public_,
+This project aims to create an ecommerce store utilising django and stripe.
 
-Another blue button should appear to click: _Open Browser_.
+The website will allow the user to purchase window tinting related items from the comfort of their home.
 
-To run a backend Python file, type `python3 app.py`, if your Python file is named `app.py` of course.
+# 2: User Stories
 
-A blue button should appear to click: _Make Public_,
+Below are some user stories which reveal how this website is useful for the end user.
+Viewing The Store:
++ 'A shopper: I want to view a list of product categories'
++ 'A shopper: I want to view a list of products in each category'
++ 'A shopper: I want to view product details'
++ 'A shopper: I want to search & sort items'
++ 'A shopper: I want to see my total at all times'
 
-Another blue button should appear to click: _Open Browser_.
+Checking Out:
++ 'A shopper: I want to purchase items without signing up'
++ 'A shopper: I want to receive an email confirming my order'
 
-In Gitpod you have superuser security privileges by default. Therefore you do not need to use the `sudo` (superuser do) command in the bash terminal in any of the lessons.
+User Profiles
++ 'A shopper: I want to sign up and keep a record of my orders'
++ 'A shopper: I want to be able to recover my password'
 
-To log into the Heroku toolbelt CLI:
-
-1. Log in to your Heroku account and go to *Account Settings* in the menu under your avatar.
-2. Scroll down to the *API Key* and click *Reveal*
-3. Copy the key
-4. In Gitpod, from the terminal, run `heroku_config`
-5. Paste in your API key when asked
-
-You can now use the `heroku` CLI program - try running `heroku apps` to confirm it works. This API key is unique and private to you so do not share it. If you accidentally make it public then you can create a new one with _Regenerate API Key_.
-
-------
-
-## Release History
-
-We continually tweak and adjust this template to help give you the best experience. Here is the version history:
-
-**September 1 2021:** Remove `PGHOSTADDR` environment variable.
-
-**July 19 2021:** Remove `font_fix` script now that the terminal font issue is fixed.
-
-**July 2 2021:** Remove extensions that are not available in Open VSX.
-
-**June 30 2021:** Combined the P4 and P5 templates into one file, added the uptime script. See the FAQ at the end of this file.
-
-**June 10 2021:** Added: `font_fix` script and alias to fix the Terminal font issue
-
-**May 10 2021:** Added `heroku_config` script to allow Heroku API key to be stored as an environment variable.
-
-**April 7 2021:** Upgraded the template for VS Code instead of Theia.
-
-**October 21 2020:** Versions of the HTMLHint, Prettier, Bootstrap4 CDN and Auto Close extensions updated. The Python extension needs to stay the same version for now.
-
-**October 08 2020:** Additional large Gitpod files (`core.mongo*` and `core.python*`) are now hidden in the Explorer, and have been added to the `.gitignore` by default.
-
-**September 22 2020:** Gitpod occasionally creates large `core.Microsoft` files. These are now hidden in the Explorer. A `.gitignore` file has been created to make sure these files will not be committed, along with other common files.
-
-**April 16 2020:** The template now automatically installs MySQL instead of relying on the Gitpod MySQL image. The message about a Python linter not being installed has been dealt with, and the set-up files are now hidden in the Gitpod file explorer.
-
-**April 13 2020:** Added the _Prettier_ code beautifier extension instead of the code formatter built-in to Gitpod.
-
-**February 2020:** The initialisation files now _do not_ auto-delete. They will remain in your project. You can safely ignore them. They just make sure that your workspace is configured correctly each time you open it. It will also prevent the Gitpod configuration popup from appearing.
-
-**December 2019:** Added Eventyret's Bootstrap 4 extension. Type `!bscdn` in a HTML file to add the Bootstrap boilerplate. Check out the <a href="https://github.com/Eventyret/vscode-bcdn" target="_blank">README.md file at the official repo</a> for more options.
-
-------
-
-## FAQ about the uptime script
-
-**Why have you added this script?**
-
-It will help us to calculate how many running workspaces there are at any one time, which greatly helps us with cost and capacity planning. It will help us decide on the future direction of our cloud-based IDE strategy.
-
-**How will this affect me?**
-
-For everyday usage of Gitpod, it doesn’t have any effect at all. The script only captures the following data:
-
-- An ID that is randomly generated each time the workspace is started.
-- The current date and time
-- The workspace status of “started” or “running”, which is sent every 5 minutes.
-
-It is not possible for us or anyone else to trace the random ID back to an individual, and no personal data is being captured. It will not slow down the workspace or affect your work.
-
-**So….?**
-
-We want to tell you this so that we are being completely transparent about the data we collect and what we do with it.
-
-**Can I opt out?**
-
-Yes, you can. Since no personally identifiable information is being captured, we'd appreciate it if you let the script run; however if you are unhappy with the idea, simply run the following commands from the terminal window after creating the workspace, and this will remove the uptime script:
-
-```
-pkill uptime.sh
-rm .vscode/uptime.sh
-```
-
-**Anything more?**
-
-Yes! We'd strongly encourage you to look at the source code of the `uptime.sh` file so that you know what it's doing. As future software developers, it will be great practice to see how these shell scripts work.
+# 3: User Experience(UX)
+## Strategy Plane
+* What is the purpose of this website?
+    * The purpose of this project is to create an ecommerce store and sell window tinting supplies
+* Who is the user?
+    * DIY type user
+    * Car owner & enthusiast
+    * Aged 18 and over
+* Value for the user?
+    * Privacy in their car
+    * UV light protection.
 
 ---
+## Scope Plane
+### Function Requirements
+* Provide products that will enable the user to tint their own car. This means providing window tint film as well as installation tools.
+* Search function in the store.
+* User accounts
 
-Happy coding!
+### Content Requirements
+* Home page where new users can view product categories to help them navigate with ease.
+* Private profile where you can see their previous orders.
+* A collection of window tinting tips and tutorials.
+
+---
+## Structure Plane
+### Information Architecture
+* 
+
+### Data Structure
+__'users' Collection__
+key | type | purpose | required?
+--- | --- | --- | ---
+
+
+### Interaction Design
+* Check out with or without an account.
+* Search & sort functionality
+* View categories and products
+
+---
+## Skeleton Plane
+Wireframes can be found [here]()
+
+The footer will contain copyright information as well as social media links
+
+---
+## Surface Plane
+### Colours
+__Primary Colours:__
+Colour | Colour Code | Preview
+--- | --- | :---:
+Light-Blue | #336AFF | ![#F26432](https://via.placeholder.com/15/336AFF/000000?text=+)
+Green | #2B9348 | ![!2B9348](https://via.placeholder.com/15/2B9348/000000?text=+)
+Red | #D90429 | ![#D90429](https://via.placeholder.com/15/D90429/000000?text=+)
+
+
+__Text Body Colours:__
+Colour | Colour Code | Preview
+--- | --- | :---:
+Charcoal | #2c3e50 | ![#2c3e50](https://via.placeholder.com/15/2c3e50/000000?text=+)
+
+
+### Typography
+
+"[Roboto](https://fonts.google.com/specimen/Roboto)" will be used for any headings.
+
+"[Open Sans](https://fonts.google.com/specimen/Open+Sans)" will be used for the body.
+# 4: Features
+
+# 5: Technologies Used
+This project uses the following technologies:
+* HTML5
+* CSS3
+* JavaScript
+* jQuery
+* Python
+* Django
+* Postgres
+* Bootstrap 5
+* FontAwesome Icons
+* Google Fonts
+* Github & Git
+* GitPod
+* Heroku
+
+# 6: Trials & Testing
+* Website was run through the Mobile-Friendly Test by Google and was deemed Mobile Friendly. To further test this, I opened the website on my phone as well as friends and co-workers phones.
+    * [Google Mobile-Friendly Test](https://search.google.com/test/mobile-friendly?id=FR_v3_v6Gc652veMM-1JZg)
+* Validated HTML, CSS and JS using validators.
+* Checked that all links are working.
+* Ran style.css through [Autoprefixer](https://autoprefixer.github.io/) to add vendor prefixes.
+
+# 7: Problem Areas & Solutions
+* You could pin more than 5 entries if you pinned it upon creation with 5 pins already present.
+    * __Solution:__ I added a check in the backend to prevent this from happening, even if you get rid of the disabled attribute on the checkbox using inspect element.
+
+# 8: Code Validation
+HTML was Validated using the [W3 Validator](https://validator.w3.org/).
+
+CSS was Validated using [Jigsaw W3 Validator](https://jigsaw.w3.org/css-validator/) and returned no errors.
+
+JavaScript was Validated using [JSHint](https://jshint.com/) with no major errors.
+
+# 9: Website Deployment
+This project is deployed to the public by using Heroku. This is how I did it.
+
+1. Create a new app using the dashboard on Heroku.
+2. Deployment method: GitHub for automatic deployment.
+3. Go to your app settings tab and configure variables to match __env.py__ file.
+4. Ensure that your repository contains the requirements.txt and Procfile files.
+5. You can now enable automatic deployment on Heroku.
+6. Scrolling down the page, you can click deploy branch.
+
+[View On Heroku](http://health-diary-tracker.herokuapp.com/)
+
+# 10: Credits & Acknowledgments
+* 
+# 11: Repository Support
+For support please email at [xdshiftblue@gmail.com](mailto:xdshiftblue@gmail.com)
