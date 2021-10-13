@@ -41,6 +41,9 @@ Viewing The Store:
 + 'A shopper: I want to view product details'
 + 'A shopper: I want to search & sort items'
 + 'A shopper: I want to see my total at all times'
++ 'A shopper: I want to see frequently asked questions'
++ 'A shopper: I want to see contact details for the store'
++ 'A shopper: I want to see an about section'
 
 Checking Out:
 + 'A shopper: I want to purchase items without signing up'
@@ -70,9 +73,10 @@ User Profiles
 * User accounts
 
 ### Content Requirements
-* Home page where new users can view product categories to help them navigate with ease.
+* Home page where users can view product categories to help them navigate with ease.
 * Private profile where you can see their previous orders.
-* A collection of window tinting tips and tutorials.
+* A collection of frequently asked questions.
+* An about and contact section.
 
 ---
 ## Structure Plane
@@ -80,21 +84,30 @@ User Profiles
 * 
 
 ### Data Structure
-__'users' Collection__
+__'user' Collection__
 key | type | purpose | required?
 --- | --- | --- | ---
 
+__'category' Collection__
+key | type | purpose | required?
+--- | --- | --- | ---
+
+__'product' Collection__
+key | type | purpose | required?
+--- | --- | --- | ---
+
+__'order' Collection__
+key | type | purpose | required?
+--- | --- | --- | ---
 
 ### Interaction Design
 * Check out with or without an account.
 * Search & sort functionality
-* View categories and products
+* View categories, products, faq, about and contact details.
 
 ---
 ## Skeleton Plane
-Wireframes can be found [here]()
-
-The footer will contain copyright information as well as social media links
+Wireframes can be found [here](https://github.com/JakubMrowicki/auto-tints/tree/main/wireframes)
 
 ---
 ## Surface Plane
@@ -115,7 +128,7 @@ Charcoal | #2c3e50 | ![#2c3e50](https://via.placeholder.com/15/2c3e50/000000?tex
 
 ### Typography
 
-"[Roboto](https://fonts.google.com/specimen/Roboto)" will be used for any headings.
+"[Bebas Neue](https://fonts.google.com/specimen/Bebas+Neue)" will be used for any headings.
 
 "[Open Sans](https://fonts.google.com/specimen/Open+Sans)" will be used for the body.
 # 4: Features
@@ -164,7 +177,7 @@ This project is deployed to the public by using Heroku. This is how I did it.
 5. You can now enable automatic deployment on Heroku.
 6. Scrolling down the page, you can click deploy branch.
 
-[View On Heroku](http://health-diary-tracker.herokuapp.com/)
+[View On Heroku]()
 
 # 10: Credits & Acknowledgments
 * 
