@@ -1,0 +1,41 @@
+[{
+        "pk": 1,
+        "model": "products.category",
+        "fields": {
+            "name": "dyed",
+            "friendly_name": "Dyed Films",
+            "description": "Budget range window tint.",
+            "image": "dyed_cat.jpg"
+        }
+    },
+    {
+        "pk": 2,
+        "model": "products.category",
+        "fields": {
+            "name": "carbon",
+            "friendly_name": "Carbon Films",
+            "description": "Mid range window tint.",
+            "image": "carbon_cat.jpg"
+        }
+    },
+    {
+        "pk": 3,
+        "model": "products.category",
+        "fields": {
+            "name": "ceramic",
+            "friendly_name": "Ceramic Films",
+            "description": "Top of the range window tint.",
+            "image": "ceramic_cat.jpg"
+        }
+    },
+    {
+        "pk": 4,
+        "model": "products.category",
+        "fields": {
+            "name": "tools",
+            "friendly_name": "Window Tinting Tools",
+            "description": "Great quality window tinting tools and accessories.",
+            "image": "tool_cat.jpg"
+        }
+    }
+]
