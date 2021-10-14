@@ -1,7 +1,7 @@
 {% load static %}
 
 <!doctype html>
-<html lang="en">
+<html lang="en" class="h-100">
 
 <head>
   {% block meta %}
@@ -39,7 +39,7 @@
   <title>Auto-Tints | {% block extra_title %}{% endblock %}</title>
 </head>
 
-<body>
+<body class="d-flex flex-column h-100">
   <!-- Desktop Navbar -->
   <header class="container d-none d-lg-block">
     <div class="row py-5">
@@ -73,8 +73,9 @@
               Contact
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdownContactUs">
-              <li><a class="dropdown-item" href="#"><i class="fas fa-phone"></i> Call Us</a></li>
-              <li><a class="dropdown-item" href="#"><i class="fas fa-at"></i> Email Us</a></li>
+              <li><a class="dropdown-item" href="tel:0353851234567"><i class="fas fa-phone"></i> Call Us</a></li>
+              <li><a class="dropdown-item" href="mailto:contact@auto-tints.ie"><i class="fas fa-at"></i> Email Us</a>
+              </li>
             </ul>
           </li>
         </ul>
@@ -132,8 +133,7 @@
       <button type="button" class="btn position-relative mx-3">
         <i class="fas fa-shopping-bag fa-2x"></i>
         <span class="position-absolute top-0 end-0 badge rounded-pill bg-secondary
-          {% if not cart_items %}d-none{% endif %}">0 <span
-            class="visually-hidden">items in cart</span></span>
+          {% if not cart_items %}d-none{% endif %}">0 <span class="visually-hidden">items in cart</span></span>
       </button>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -163,14 +163,16 @@
               Contact
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdownContact">
-              <li><a class="dropdown-item text-center" href="#">Call Us</a></li>
-              <li><a class="dropdown-item text-center" href="#">Email Us</a></li>
+              <li><a class="dropdown-item text-center" href="tel:0353851234567"><i class="fas fa-phone"></i> Call Us</a>
+              </li>
+              <li><a class="dropdown-item text-center" href="mailto:contact@auto-tints.ie"><i class="fas fa-at"></i>
+                  Email Us</a></li>
             </ul>
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link text-center dropdown-toggle" href="#" id="navbarUserControls" role="button"
               data-bs-toggle="dropdown" aria-expanded="false">
-                User Controls
+              User Controls
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarUserControls">
               {% if request.user.is_authenticated %}
@@ -204,11 +206,60 @@
   <div class="message-container"></div>
   {% endif %}
 
-  {% block page_header %}
-  {% endblock %}
-
   {% block content %}
   {% endblock %}
+
+  <!-- footer area -->
+  <footer class="container-fluid mt-auto">
+    <div class="row bg-dark text-white py-5 text-center">
+      <div class="col-12 col-md-4">
+        <h2>Info</h2>
+        <ul class="list-unstyled fs-5">
+          <li>
+            <i class="fas fa-undo-alt"> </i>
+            <a href="#">Shipping & Returns</a>
+            <!--Update Link-->
+          </li>
+          <li>
+            <i class="fas fa-money-bill-alt"> </i>
+            <a href="#">Payment Methods</a>
+            <!--Update Link-->
+          </li>
+        </ul>
+      </div>
+      <div class="col-12 col-md-4">
+        <h2>Get In Touch</h2>
+        <ul class="list-unstyled fs-5">
+          <li>
+            <i class="fas fa-phone"> </i>
+            <a href="tel:0353851234567">+353 85 123 4567</a>
+          </li>
+          <li>
+            <i class="fas fa-at"> </i>
+            <a href="mailto:contact@auto-tints.ie">contact@auto-tints.ie</a>
+          </li>
+        </ul>
+      </div>
+      <div class="col-12 col-md-4">
+        <h2>Find Us On</h2>
+        <ul class="list-unstyled fs-5">
+          <li>
+            <i class="fab fa-facebook-square"> </i>
+            <a href="https://www.facebook.com" target="_blank">Facebook</a>
+          </li>
+          <li>
+            <i class="fab fa-instagram-square"> </i>
+            <a href="https://www.instagram.com" target="_blank">Instagram</a>
+          </li>
+          <li>
+            <i class="fab fa-twitter-square"> </i>
+            <a href="https://www.twitter.com" target="_blank">Twitter</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <span class="d-block text-center my-4">Copyright 2021 Auto-Tints</span>
+  </footer>
 
   {% block postloadjs %}
   {% endblock %}

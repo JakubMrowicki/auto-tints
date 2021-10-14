@@ -26,7 +26,18 @@ header h1:hover, header small:hover, .nav-link:hover, header .list-inline-item a
 header a {
     text-decoration: none;
 }
-
+/*Footer*/
+footer a {
+    color: white;
+    text-decoration: none;
+    opacity: 1;
+    transition: opacity .15s ease-in-out;
+}
+footer a:hover {
+    color: white;
+    opacity: 0.5;
+    text-decoration: underline;
+}
 /*Utility Classes*/
 .start-200 {
     left: 200% !important;
