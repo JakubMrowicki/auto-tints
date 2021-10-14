@@ -1,0 +1,33 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Open+Sans&display=swap');
+/*Overrides*/
+* {
+    margin: 0;
+    padding: 0;
+}
+html {
+    min-height: -webkit-fill-available;
+    font-family: 'Open Sans', sans-serif;
+}
+h1, h2, h3, h4, h5, h6, .navbar-brand {
+    font-family: 'Bebas Neue', cursive;
+}
+/*Navbar*/
+header h1, header small, .nav-link, .nav-link:focus, header .list-inline-item a, .btn-link {
+    color: black;
+    opacity: 1;
+    text-decoration: none;
+    transition: opacity .35s ease-in-out;
+}
+header h1:hover, header small:hover, .nav-link:hover, header .list-inline-item a:hover, .btn-link:hover {
+    color: black;
+    text-decoration: none;
+    opacity: 0.5;
+}
+header a {
+    text-decoration: none;
+}
+
+/*Utility Classes*/
+.start-200 {
+    left: 200% !important;
+}
