@@ -12,11 +12,14 @@ class Category(models.Model):
 
     def __str__(self):
         """ return category name """
-        return self.name
+        return str(self.name)
 
     def get_friendly_name(self):
         """ return category friendly name """
         return self.friendly_name
+
+    class Meta():
+        verbose_name_plural = "Categories"
 
 
 class Product(models.Model):
@@ -30,4 +33,4 @@ class Product(models.Model):
 
     def __str__(self):
         """ return product name """
-        return self.name
+        return str(self.name)
