@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="container">
+    <h1 class="my-5 text-center">
+        <i class="fas fa-exclamation-triangle"> </i>
+        Uh oh! Page not found, try another or <a href="{% url 'home' %}"><u>go back</u></a>.</h1>
+</div>
+{% endblock %}
