@@ -57,8 +57,9 @@
               Shop
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdownOurShop">
-              <li><a class="dropdown-item" href="#">Category 1</a></li>
-              <li><a class="dropdown-item" href="#">Category 2</a></li>
+              {% for category in categories %}
+                <li><a class="dropdown-item" href="#">{{ category.friendly_name }}</a></li>
+              {% endfor %}
             </ul>
           </li>
           <li class="nav-item">
@@ -147,8 +148,9 @@
               Shop
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdownShop">
-              <li><a class="dropdown-item text-center" href="#">Category 1</a></li>
-              <li><a class="dropdown-item text-center" href="#">Category 2</a></li>
+              {% for category in categories %}
+                <li><a class="dropdown-item text-center" href="#">{{ category.friendly_name }}</a></li>
+              {% endfor %}
             </ul>
           </li>
           <li class="nav-item">
