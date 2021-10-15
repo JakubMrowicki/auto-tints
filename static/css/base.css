@@ -19,6 +19,9 @@ a:hover {
     color: black;
     text-decoration: underline;
 }
+.dropdown-item:active {
+    background-color: grey;
+}
 /*Navbar*/
 header h1, header small, .nav-link, .nav-link:focus, header .list-inline-item a, .btn-link {
     color: black;
