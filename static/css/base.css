@@ -1,42 +1,68 @@
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Open+Sans&display=swap');
+
 /*Overrides*/
-* , body{
+*,
+body {
     margin: 0;
     padding: 0;
 }
+
 html {
     min-height: -webkit-fill-available;
     font-family: 'Open Sans', sans-serif;
 }
-h1, h2, h3, h4, h5, h6, .navbar-brand {
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.navbar-brand {
     font-family: 'Bebas Neue', cursive;
 }
+
 a {
     color: black;
     text-decoration: none;
 }
+
 a:hover {
     color: black;
     text-decoration: underline;
 }
+
 .dropdown-item:active {
     background-color: grey;
 }
+
 /*Navbar*/
-header h1, header small, .nav-link, .nav-link:focus, header .list-inline-item a, .btn-link {
+header h1,
+header small,
+.nav-link,
+.nav-link:focus,
+header .list-inline-item a,
+.btn-link {
     color: black;
     opacity: 1;
     text-decoration: none;
     transition: opacity .35s ease-in-out;
 }
-header h1:hover, header small:hover, .nav-link:hover, header .list-inline-item a:hover, .btn-link:hover {
+
+header h1:hover,
+header small:hover,
+.nav-link:hover,
+header .list-inline-item a:hover,
+.btn-link:hover {
     color: black;
     text-decoration: none;
     opacity: 0.5;
 }
+
 header a {
-    text-decoration: none;
+    text-decoration: none !important;
 }
+
 /*Footer*/
 footer a {
     color: white;
@@ -44,25 +70,37 @@ footer a {
     opacity: 1;
     transition: opacity .15s ease-in-out;
 }
+
 footer a:hover {
     color: white;
     opacity: 0.5;
     text-decoration: underline;
 }
+
 /*Utility Classes*/
 .start-200 {
     left: 200% !important;
 }
+
 .bg-grey {
     background-color: lightgray;
 }
+
 .btn-black {
     color: #fff;
     background-color: #202020;
     border-color: white;
 }
+
 .btn-black:hover {
     color: #b6b6b6;
     border-color: black;
     transition: all 0.25s ease-in-out;
+}
+
+hr {
+    height: 2px;
+    width: 50%;
+    border-width: 0;
+    background-color: black;
 }
