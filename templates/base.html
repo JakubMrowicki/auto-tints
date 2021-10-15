@@ -58,7 +58,7 @@
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdownOurShop">
               {% for category in categories %}
-                <li><a class="dropdown-item" href="#">{{ category.friendly_name }}</a></li>
+                <li><a class="dropdown-item" href="{% url 'products' %}#?category={{ category.name }}">{{ category.friendly_name }}</a></li>
               {% endfor %}
             </ul>
           </li>
@@ -149,7 +149,7 @@
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdownShop">
               {% for category in categories %}
-                <li><a class="dropdown-item text-center" href="#">{{ category.friendly_name }}</a></li>
+                <li><a class="dropdown-item text-center" href="{% url 'products' %}?category={{ category.name }}">{{ category.friendly_name }}</a></li>
               {% endfor %}
             </ul>
           </li>
