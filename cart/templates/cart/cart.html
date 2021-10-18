@@ -2,7 +2,45 @@
 {% load static %}
 
 {% block content %}
-<div class="container mt-5">
-  <h1>Hello</h1>
+<div class="container my-5">
+    <div class="row">
+        <div class="col-12 col-lg-8">
+            <h1>Your Cart</h1>
+            <hr>
+            {% for item in cart_items %}
+            <div class="py-2 mb-2 border-1 d-flex">
+                <img class="img-thumbnail float-start" style="max-height: 200px;" src="{{ item.product.image.url }}"
+                    alt="{{ item.product.name }}">
+                <div class="px-2">
+                    <h2>{{ item.product.name }} <small class="text-muted ml-2">
+                            €{{ item.product.price|floatformat:2 }}</small></h2>
+                    <small class="d-block">SKU: {{ item.product.sku }}</small>
+                    <span class="d-block">Item Total: <b>€{{ item.total_price|floatformat:2 }}</b></span>
+                    <form action="{% url 'edit_item' item.product.id %}" method="post">
+                        {% csrf_token %}
+                        <label for="quantity" class="form-label">Quantity</label>
+                        <input type="number" name="quantity" min="1" max="99" value="{{ item.quantity }}"
+                            class="form-control" style="max-width: 100px;" id="quantity" aria-describedby="quantity">
+                        <input type="submit" class="btn btn-link" name="update_button" value="Update">
+                        <input type="submit" class="btn btn-link" name="delete_button" value="Remove">
+                        <input type="hidden" name="redirect_url" value="{{ request.path }}">
+                    </form>
+                </div>
+
+            </div>
+            {% endfor %}
+        </div>
+        <div class="col-12 col-lg-4">
+            <h1>Order Summary</h1>
+            <hr>
+            <h3>Subtotal: <div class="float-end">€{{ total|floatformat:2 }}</div>
+            </h3>
+            <h3 class="border-bottom">Shipping: <div class="float-end">€{{ delivery_charge|floatformat:2 }}</div>
+            </h3>
+            <h3>Total(incl. tax): <div class="float-end">€{{ grand_total|floatformat:2 }}</div>
+            </h3>
+            <button class="btn btn-black w-100 p-2"><i class="fas fa-lock"></i> Secure Checkout</button>
+        </div>
+    </div>
 </div>
 {% endblock %}

@@ -22,3 +22,22 @@ def add_to_cart(request, item_id):
     
     request.session['cart'] = cart
     return redirect(redirect_url)
+
+
+def edit_item(request, item_id):
+    """ Remove item from cart """
+
+    cart = request.session.get('cart', {})
+    redirect_url = request.POST.get('redirect_url')
+
+    if request.POST.get('update_button'):
+        quantity = request.POST.get('quantity')
+        if item_id in list(cart.keys()):
+            cart[item_id] = quantity
+
+    if request.POST.get('delete_button'):
+        if item_id in list(cart.keys()):
+            del cart[item_id]
+    
+    request.session['cart'] = cart
+    return redirect(redirect_url)

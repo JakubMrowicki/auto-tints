@@ -1,5 +1,6 @@
 from products.models import Category, Product
 from django.conf import settings
+from django.shortcuts import get_object_or_404
 
 def get_categories(request):
     """ Get a list of all available categories """
@@ -11,14 +12,26 @@ def get_categories(request):
 
 
 def cart_contents(request):
-    cart_items = request.session.get('cart', {})
+    cart = request.session.get('cart', {})
+    cart_items = []
     cart_items_count = 0
     total = 0
-    grand_total = total + settings.DELIVERY_CHARGE
 
-    if cart_items:
-        for quantity in list(cart_items.values()):
+    if cart:
+        for quantity in list(cart.values()):
             cart_items_count += int(quantity)
+
+    for item_id, quantity in cart.items():
+        product = get_object_or_404(Product, pk=item_id)
+        total += product.price * int(quantity)
+        cart_items.append({
+            'product': product,
+            'item_id': item_id,
+            'quantity': quantity,
+            'total_price': product.price * int(quantity)
+        })
+    
+    grand_total = total + settings.DELIVERY_CHARGE
 
     context = {
         'cart_items': cart_items,
