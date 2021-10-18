@@ -12,6 +12,8 @@ def get_categories(request):
 
 
 def cart_contents(request):
+    """ Context processor for cart functionality """
+
     cart = request.session.get('cart', {})
     cart_items = []
     cart_items_count = 0
