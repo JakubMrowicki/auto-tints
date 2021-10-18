@@ -115,7 +115,7 @@
             </div>
           </div>
           <li class="list-inline-item">
-            <a href="#">
+            <a href="{% url 'view_cart' %}">
               <i class="fas fa-shopping-bag fa-lg position-relative">
                 <span class="position-absolute top-50 start-200 translate-middle badge rounded-pill bg-secondary
                   {% if not cart_items %}d-none{% endif %}">0
@@ -132,11 +132,11 @@
   <nav class="navbar navbar-expand-lg navbar-light border-bottom d-lg-none">
     <div class="container-fluid">
       <a class="navbar-brand flex-grow-1" href="#">Auto-Tints</a>
-      <button type="button" class="btn position-relative mx-3">
+      <a href= "{% url 'view_cart' %}" type="button" class="btn position-relative mx-3">
         <i class="fas fa-shopping-bag fa-2x"></i>
         <span class="position-absolute top-0 end-0 badge rounded-pill bg-secondary
           {% if not cart_items %}d-none{% endif %}">0 <span class="visually-hidden">items in cart</span></span>
-      </button>
+      </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>

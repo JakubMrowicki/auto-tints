@@ -28,7 +28,7 @@ DEBUG = os.environ.get('DEVELOPMENT', 'True')
 # DEBUG = False
 
 ALLOWED_HOSTS = ['localhost']
-# Change For Prod
+# Change For Prod ################################################################################
 
 
 # Application definition
@@ -53,6 +53,7 @@ INSTALLED_APPS = [
     #custom apps
     'home',
     'products',
+    'cart',
 ]
 
 MIDDLEWARE = [
