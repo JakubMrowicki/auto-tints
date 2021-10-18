@@ -64,10 +64,10 @@
             </ul>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">About</a>
+            <a class="nav-link" href="{% url 'home' %}#about">About</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">FAQ</a>
+            <a class="nav-link" href="{% url 'faq' %}">FAQ</a>
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownContactUs" role="button"
@@ -87,7 +87,7 @@
           <li class="list-inline-item flex-grow-1">
             <form style="display: inline;" method="GET" action="{% url 'products' %}">
               <div class="input-group">
-                <input type="text" class="form-control" placeholder="Search" name="q" aria-describedby="search-button">
+                <input type="text" class="form-control" placeholder="Search" {% if query %}value="{{ query }}"{% endif %} name="q" aria-describedby="search-button">
                 <button class="btn btn-outline-secondary" type="submit" id="search-button">
                   <i class="fas fa-search"></i>
                 </button>
@@ -157,10 +157,10 @@
             </ul>
           </li>
           <li class="nav-item">
-            <a class="nav-link text-center" href="#">About</a>
+            <a class="nav-link text-center" href="{% url 'home' %}#about">About</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link text-center" href="#">FAQ</a>
+            <a class="nav-link text-center" href="{% url 'faq' %}">FAQ</a>
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link text-center dropdown-toggle" href="#" id="navbarDropdownContact" role="button"
@@ -197,7 +197,7 @@
         </ul>
         <form method="GET" action="{% url 'products' %}">
           <div class="input-group">
-            <input type="text" class="form-control" placeholder="Search" name="q" aria-describedby="search-button">
+            <input type="text" class="form-control" placeholder="Search" {% if query %}value="{{ query }}"{% endif %} name="q" aria-describedby="search-button">
             <button class="btn btn-outline-secondary" type="submit" id="search-button">
               <i class="fas fa-search"></i>
             </button>
@@ -224,13 +224,11 @@
         <ul class="list-unstyled fs-5">
           <li>
             <i class="fas fa-undo-alt"> </i>
-            <a href="#">Shipping & Returns</a>
-            <!--Update Link-->
+            <a href="{% url 'faq' %}#returns">Shipping & Returns</a>
           </li>
           <li>
             <i class="fas fa-money-bill-alt"> </i>
-            <a href="#">Payment Methods</a>
-            <!--Update Link-->
+            <a href="{% url 'faq' %}#payment-methods">Payment Methods</a>
           </li>
         </ul>
       </div>
