@@ -75,7 +75,7 @@ footer a {
     transition: opacity .15s ease-in-out;
 }
 
-footer a:hover {
+footer a:hover, a.badge:hover {
     color: white;
     opacity: 0.5;
     text-decoration: underline;

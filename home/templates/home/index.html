@@ -2,8 +2,9 @@
 {% load static %}
 
 {% block content %}
-<div class="container mt-5">
-  <div class="row">
+<div class="container">
+  <h1 class="text-center mt-5">Categories</h1>
+  <div class="row my-5">
     {% for category in categories %}
     <div class="col-12 col-md-4 col-lg-3">
       <div class="card h-100 border-0 text-center">
@@ -19,7 +20,7 @@
     {% endfor %}
   </div>
 </div>
-<div class="container-fluid text-center bg-grey py-5 mt-5">
+<div class="container-fluid text-center bg-grey py-5">
   <div class="container">
     <h2 class="fs-1">About</h2>
     <p class="fs-4">Auto-Tints is an automotive window film and tool supplier in Dublin. We pride ourselves in the

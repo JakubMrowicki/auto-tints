@@ -59,7 +59,7 @@
             <ul class="dropdown-menu" aria-labelledby="navbarDropdownOurShop">
               {% for category in categories %}
               <li><a class="dropdown-item"
-                  href="{% url 'products' %}#?category={{ category.name }}">{{ category.friendly_name }}</a></li>
+                  href="{% url 'products' %}?category={{ category.name }}">{{ category.friendly_name }}</a></li>
               {% endfor %}
             </ul>
           </li>
@@ -85,9 +85,9 @@
       <div class="col-lg-3 col-md-4 d-flex justify-content-end align-items-center">
         <ul class="list-unstyled list-inline d-flex align-items-center mb-0">
           <li class="list-inline-item flex-grow-1">
-            <form style="display: inline;" method="GET" action="">
+            <form style="display: inline;" method="GET" action="{% url 'products' %}">
               <div class="input-group">
-                <input type="text" class="form-control" placeholder="Search" aria-describedby="search-button">
+                <input type="text" class="form-control" placeholder="Search" name="q" aria-describedby="search-button">
                 <button class="btn btn-outline-secondary" type="submit" id="search-button">
                   <i class="fas fa-search"></i>
                 </button>
@@ -195,9 +195,9 @@
             </ul>
           </li>
         </ul>
-        <form method="GET" action="">
+        <form method="GET" action="{% url 'products' %}">
           <div class="input-group">
-            <input type="text" class="form-control" placeholder="Search" aria-describedby="search-button">
+            <input type="text" class="form-control" placeholder="Search" name="q" aria-describedby="search-button">
             <button class="btn btn-outline-secondary" type="submit" id="search-button">
               <i class="fas fa-search"></i>
             </button>

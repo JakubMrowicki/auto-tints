@@ -3,6 +3,7 @@
 
 {% block content %}
 <div class="container mt-5">
+    {% if cart_items %}
     <div class="row text-center text-md-start">
         <div class="col-12 col-md-8">
             <h1>Your Cart ({{ cart_items_count }} items)</h1>
@@ -63,5 +64,10 @@
         <a href="{% url 'products' %}" class="btn btn-link my-5"><i class="fas fa-arrow-left"></i> Keep
             shopping</a>
     </div>
+    {% else %}
+    <div class="py-5">
+        <h2 class="text-center">Your cart is empty. <a href="{% url 'home' %}"><u>Go back</u></a>.</h2>
+    </div>
+    {% endif %}
 </div>
 {% endblock %}
