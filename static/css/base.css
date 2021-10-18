@@ -36,6 +36,10 @@ a:hover {
     background-color: grey;
 }
 
+.toast-container {
+    z-index: 99999;
+}
+
 /*Navbar*/
 header h1,
 header small,
@@ -117,4 +121,8 @@ hr {
     width: 50%;
     border-width: 0;
     background-color: black;
+}
+
+.h-5px {
+    height: 5px;
 }

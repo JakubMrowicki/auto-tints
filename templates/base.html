@@ -23,12 +23,12 @@
   {% endblock %}
 
   {% block corejs %}
-  <script defer src="https://kit.fontawesome.com/a600e7a80a.js" crossorigin="anonymous"></script>
-  <script defer src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <script defer src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
+  <script src="https://kit.fontawesome.com/a600e7a80a.js" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
     integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous">
   </script>
-  <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
     integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous">
   </script>
   {% endblock %}
@@ -115,7 +115,7 @@
             </div>
           </div>
           <li class="list-inline-item">
-            <a href="{% url 'view_cart' %}" title= "Items in cart">
+            <a href="{% url 'view_cart' %}" title="Items in cart">
               <i class="fas fa-shopping-bag fa-lg position-relative">
                 <span class="position-absolute top-50 start-200 translate-middle badge rounded-pill bg-secondary
                   {% if not cart_items %}d-none{% endif %}">{{ cart_items_count }}
@@ -131,11 +131,12 @@
   <!-- Mobile Navbar -->
   <nav class="navbar navbar-expand-lg navbar-light border-bottom d-lg-none">
     <div class="container-fluid">
-      <a class="navbar-brand flex-grow-1" href="#">Auto-Tints</a>
-      <a href= "{% url 'view_cart' %}" type="button" title= "Items in cart" class="btn position-relative mx-3">
+      <a class="navbar-brand flex-grow-1" href="{% url 'home' %}">Auto-Tints</a>
+      <a href="{% url 'view_cart' %}" type="button" title="Items in cart" class="btn position-relative mx-3">
         <i class="fas fa-shopping-bag fa-2x"></i>
         <span class="position-absolute top-0 end-0 badge rounded-pill bg-secondary
-          {% if not cart_items %}d-none{% endif %}">{{ cart_items_count }} <span class="visually-hidden">items in cart</span></span>
+          {% if not cart_items %}d-none{% endif %}">{{ cart_items_count }} <span class="visually-hidden">items in
+            cart</span></span>
       </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -207,11 +208,9 @@
   </nav>
 
   {% if messages %}
-  <div class="message-container">
     {% for message in messages %}
-    {{ message }}
+    {% include 'includes/toasts.html' %}
     {% endfor %}
-  </div>
   {% endif %}
 
   {% block content %}
@@ -270,6 +269,9 @@
   </footer>
 
   {% block postloadjs %}
+  <script defer type="text/javascript">
+    $('.toast').show();
+  </script>
   {% endblock %}
 </body>
 

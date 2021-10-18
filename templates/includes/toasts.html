@@ -1,0 +1,31 @@
+<div class="toast-container position-fixed bottom-0 end-0 p-2">
+    <div class="toast opacity-100 fade show">
+
+    {% if message.level == 40 %}
+        <div class="w-100 h-5px bg-danger"></div>
+    {% elif message.level == 30 %}
+        <div class="w-100 h-5px bg-warning"></div>
+    {% elif message.level == 25 %}
+        <div class="w-100 h-5px bg-success"></div>
+    {% else %}
+        <div class="w-100 h-5px bg-dark"></div>
+    {% endif %}
+        <div class="toast-header">
+            <strong class="me-auto"><i class="bi-globe"></i>
+                {% if message.level == 40 %}
+                Error
+                {% elif message.level == 30 %}
+                Warning
+                {% elif message.level == 25 %}
+                Success
+                {% else %}
+                Info
+                {% endif %}
+            </strong>
+            <a class="btn-close stretched-link" data-bs-dismiss="toast"></a>
+        </div>
+        <div class="toast-body">
+            {{ message }}
+        </div>
+    </div>
+</div>
