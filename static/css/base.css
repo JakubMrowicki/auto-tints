@@ -98,6 +98,15 @@ footer a:hover {
     transition: all 0.25s ease-in-out;
 }
 
+.btn-outline-black {
+    border: 1px solid black;
+}
+
+.btn-outline-black:hover {
+    border: 1px solid black;
+    background-color: grey;
+    color: white;
+}
 hr {
     height: 2px;
     width: 50%;

@@ -14,6 +14,22 @@
             <h3>Price: €{{ product.price }}</h3>
             <hr class="mt-auto mx-auto mx-md-0">
             <p>{{ product.description }}</p>
+            <form action="" method="post">
+                {% csrf_token %}
+                <div class="input-group mb-3 row justify-content-center justify-content-lg-start">
+                    <div class="col-8 col-lg-5">
+                        <label for="quantity" class="form-label">Quantity</label>
+                            <input type="number" name="quantity" min="1" max="99" value="1" class="form-control" id="quantity"
+                                aria-describedby="quantity">
+                    </div>
+                </div>
+                <div class="btn-group" role="group">
+                    <a href="{% url 'products' %}" class="btn btn-outline-black"><i class="fas fa-arrow-left"></i> Keep
+                        Shopping</a>
+                    <a type="submit" class="btn btn-outline-black"><i class="fas fa-plus"></i> Add to Cart</a>
+                </div>
+                <input type="hidden" name="redirect_url" value="{{ request.path }}">
+            </form>
         </div>
     </div>
     {% else %}
