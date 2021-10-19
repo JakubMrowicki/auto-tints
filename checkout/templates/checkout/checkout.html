@@ -1,0 +1,110 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="container my-5">
+    <div class="row text-center text-md-start">
+        <div class="col-12 col-md-8">
+            <h1>Item Summary ({{ cart_items_count }} item{% if cart_items_count > 1%}s{% endif %})</h1>
+            <hr class="mx-auto mx-md-0">
+            {% for item in cart_items %}
+            <div class="py-2 px-2 mb-2 border border-1 rounded d-none d-md-flex">
+                <img class="img-thumbnail float-start" style="max-height: 150px;" src="{{ item.product.image.url }}"
+                    alt="{{ item.product.name }}">
+                <div class="px-2">
+                    <h2>{{ item.product.name }} <small class="text-muted ml-2">
+                            €{{ item.product.price|floatformat:2 }}</small></h2>
+                    <small class="d-block">SKU: {{ item.product.sku }}</small>
+                    <span class="d-block">Item Total: <b>€{{ item.total_price|floatformat:2 }}</b></span>
+                    <form action="{% url 'edit_item' item.product.id %}" method="post">
+                        {% csrf_token %}
+                        <label for="quantity" class="form-label">Quantity</label>
+                        <input type="number" name="quantity" min="1" max="99" value="{{ item.quantity }}"
+                            class="form-control" style="max-width: 100px;" id="quantity" aria-describedby="quantity">
+                        <input type="submit" class="btn btn-link" name="update_button" value="Update">
+                        <input type="submit" class="btn btn-link" name="delete_button" value="Remove">
+                        <input type="hidden" name="redirect_url" value="{{ request.path }}">
+                    </form>
+                </div>
+            </div>
+            <div class="py-2 d-flex flex-column align-items-center d-md-none">
+                <img src="{{ item.product.image.url }}" alt="{{ item.product.name }}" class="img-fluid px-5">
+                <div class="d-block px-2">
+                    <h2 class="mt-2">{{ item.product.name }} <small class="text-muted ml-2">
+                            €{{ item.product.price|floatformat:2 }}</small></h2>
+                    <small class="d-block">SKU: {{ item.product.sku }}</small>
+                    <span class="d-block">Item Total: <b>€{{ item.total_price|floatformat:2 }}</b></span>
+                    <form action="{% url 'edit_item' item.product.id %}" method="post">
+                        {% csrf_token %}
+                        <label for="quantity" class="form-label">Quantity</label>
+                        <input type="number" name="quantity" min="1" max="99" value="{{ item.quantity }}"
+                            class="form-control" id="quantity" aria-describedby="quantity">
+                        <input type="submit" class="btn btn-link" name="update_button" value="Update">
+                        <input type="submit" class="btn btn-link" name="delete_button" value="Remove">
+                        <input type="hidden" name="redirect_url" value="{{ request.path }}">
+                    </form>
+                </div>
+            </div>
+            {% endfor %}
+            <a href="{% url 'view_cart' %}" class="btn btn-link my-5 text-start"><i class="fas fa-arrow-left"></i> Back
+                to Cart</a>
+        </div>
+        <div class="col-12 col-md-4">
+            <h1>Shipping Info</h1>
+            <hr class="mx-auto mx-md-0">
+            <div class="text-start">
+                <form action="{% url 'checkout' %}" method="POST">
+                    <div class="row">
+                        <div class="col-12">
+                            <fieldset class="mb-3">
+                                <legend class="text-muted small">Details</legend>
+                                {{ order_form.full_name | as_crispy_field }}
+                                {{ order_form.email | as_crispy_field }}
+                                {{ order_form.phone_number | as_crispy_field }}
+                            </fieldset>
+                            <fieldset class="mb-3">
+                                <legend class="text-muted small">Shipping</legend>
+                                {{ order_form.street_address1 | as_crispy_field }}
+                                {{ order_form.street_address1 | as_crispy_field }}
+                                {{ order_form.town_or_city | as_crispy_field }}
+                                {{ order_form.postcode | as_crispy_field }}
+                                {{ order_form.county | as_crispy_field }}
+                                {{ order_form.country | as_crispy_field }}
+                            </fieldset>
+                            {% if user.is_authenticated %}
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="save-info" id="id-save-info">
+                                <label class="form-check-label" for="id-save-info">
+                                    Remember my details for future orders
+                                </label>
+                            </div>
+                            {% else %}
+                            <p>You must <a href="{% url 'account_signup' %}"><u>register</u></a> or <a
+                                    href="{% url 'account_login' %}"><u>log in</u></a> to save your information.</p>
+                            {% endif %}
+                            <fieldset class="mb-3">
+                                <legend class="text-muted small">Payment</legend>
+                                <!-- Stripe card element -->
+                                <div class="mb-3" id="card-element"></div>
+                                <!-- Used to display errors -->
+                                <div class="mb-3 text-danger" id="card-errors" role="alert"></div>
+                            </fieldset>
+                        </div>
+                    </div>
+                    <h1 class="mt-3">Order Info</h1>
+                    <hr class="mx-auto mx-md-0">
+                    <div class="text-start">
+                        <h3>Subtotal: <div class="float-end">€{{ total|floatformat:2 }}</div>
+                        </h3>
+                        <h3 class="border-bottom">Shipping: <div class="float-end">€{{ delivery_charge|floatformat:2 }}
+                            </div>
+                        </h3>
+                        <h3>Total(incl. tax): <div class="float-end">€{{ grand_total|floatformat:2 }}</div>
+                        </h3>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

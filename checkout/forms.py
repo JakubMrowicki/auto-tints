@@ -19,8 +19,8 @@ class OrderForm(forms.ModelForm):
         super().__init__(*args, **kwargs)
 
         placeholders = {
-            'full_name': 'John Smith',
-            'email': 'john@smith.com',
+            'full_name': 'Your Full Name',
+            'email': 'Email Address',
             'phone_number': 'Phone Number',
             'street_address1': 'Address Line 1',
             'street_address2': 'Address Line 2',
@@ -35,5 +35,7 @@ class OrderForm(forms.ModelForm):
         for field in self.fields:
             if self.fields[field].required:
                 placeholder = f'{placeholders[field]} *'
-            self.fields[field].widget.attr['placeholder'] = placeholders
+            else:
+                placeholder = placeholders[field]
+            self.fields[field].widget.attrs['placeholder'] = placeholder
             self.fields[field].label = False

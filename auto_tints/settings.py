@@ -89,6 +89,10 @@ TEMPLATES = [
                 'auto_tints.context_processors.get_categories',
                 'auto_tints.context_processors.cart_contents',
             ],
+            'builtins': [
+                'crispy_forms.templatetags.crispy_forms_tags',
+                'crispy_forms.templatetags.crispy_forms_field'
+            ]
         },
     },
 ]

@@ -81,6 +81,10 @@ footer a:hover, a.badge:hover {
     text-decoration: underline;
 }
 
+/* Form */
+fieldset div:not(:first-child) {
+    margin-top: 0.5rem;
+}
 /*Utility Classes*/
 .start-200 {
     left: 200% !important;
