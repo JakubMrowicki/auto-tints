@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-12 col-md-6">
+            <h1 class="mt-5">Profile</h1>
+            <form action="{% url 'profile' %}" method="POST" id="user-profile-form">
+                {% csrf_token %}
+                {{ form|crispy }}
+                <div class="text-center">
+                    <button type="submit" class="btn btn-black my-3">Update</button>
+                </div>
+            </form>
+        </div>
+        <div class="col-12 col-md-6">
+            <h1 class="mt-5">Order History</h1>
+            <table class="table order-history">
+                <thead>
+                  <tr>
+                    <th scope="col">Date</th>
+                    <th scope="col">Order No.</th>
+                    <th scope="col">Items</th>
+                    <th scope="col">Total</th>
+                  </tr>
+                </thead>
+                <tbody>
+                    {% for order in orders %}
+                        <tr>
+                            <th scope="row">
+                                <a href="{% url 'order_history' order.order_number %}">{{ order.date }}</a>
+                            </th>
+                            <td title="{{ order.order_number }}">
+                                {{ order.order_number|truncatechars:6 }}
+                            </td>
+                            <td>
+                                <ul class="list-unstyled">
+                                    {% for item in order.lineitems.all %}
+                                        <li class="small">{{ item.product.name }} x{{ item.quantity }}</li>
+                                    {% endfor %}
+                                </ul>
+                            </td>
+                            <td>
+                                €{{ order.grand_total }}
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+              </table>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block postloadjs %}
+    {{ block.super }}
+    <script>
+        let countrySelected = $('#id_default_country').val();
+        if(!countrySelected) {
+            $('#id_default_country').css('color', '#707585');
+        };
+        $('#id_default_country').change(function() {
+            countrySelected = $(this).val();
+            if(!countrySelected) {
+                $(this).css('color', '#707585');
+            } else {
+                $(this).css('color', '#000');
+            }
+        });
+    </script>
+{% endblock %}

@@ -130,6 +130,15 @@ hr {
 .h-5px {
     height: 5px;
 }
+/* User Profile */
+#user-profile-form div:not(:first-child) {
+    margin-top: 0.5rem;
+}
+
+.order-history {
+    max-height: 500px;
+    overflow-y: auto;
+}
 /* Stripe */
 .StripeElement,
 .stripe-style-input {
