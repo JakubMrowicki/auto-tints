@@ -180,7 +180,8 @@ select option {
 }
 
 select:invalid,
-select option[value=""] {
+select option[value=""],
+select option:first-child {
     color: #707585 !important;
 }
 
