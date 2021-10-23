@@ -3,6 +3,47 @@
 
 {% block content %}
 <div class="container">
-    <h1 class="text-center mt-5">Order Complete</h1>
+    <div class="row">
+        <div class="col-12 mb-5">
+            <h1>Thank You</h1>
+            <p>Your order was completed at {{ order.date }}.</p>
+            <dl class="row">
+                <h3>Order Info</h3>
+                <dt class="col-sm-3">Order Number</dt>
+                <dd class="col-sm-9">{{ order.order_number }}</dd>
+                <dt class="col-sm-3">Order Date</dt>
+                <dd class="col-sm-9">{{ order.date }}</dd>
+                <dt class="col-sm-3">Delivery Charge</dt>
+                <dd class="col-sm-9">€{{ order.delivery_cost }}</dd>
+                <dt class="col-sm-3">Grand Total</dt>
+                <dd class="col-sm-9">€{{ order.grand_total }}</dd>
+                <h3>Order Details</h3>
+                {% for item in order.lineitems.all %}
+                    <dt class="col-sm-3 text-truncate" title="{{ item.product.name }}">{{ item.product.name }}</dt>
+                    <dd class="col-sm-9">
+                        {{ item.quantity }} @ €{{ item.product.price }} each. <a href="{% url 'products' %}{{ item.product.pk }}"><u>See product</u></a>
+                    </dd>
+                {% endfor %}
+                <h3>Delivery Details</h3>
+                <dt class="col-sm-3">Address</dt>
+                <dd class="col-sm-9">
+                    <address>
+                        <b>{{ order.full_name }}</b><br>
+                        {{ order.street_address1 }}<br>
+                        {% if order.street_address2 %}
+                            {{ order.street_address2 }}<br>
+                        {% endif %}
+                        {% if order.county %}
+                            {{ order.county }}<br>
+                        {% endif %}
+                        {{ order.postcode }}<br>
+                        {{ order.country }}<br>
+                        {{ order.phone_number }}
+                    </address>
+                </dd>
+            </dl>
+            <a href="{% url 'home' %}" class="btn btn-link"><i class="fas fa-arrow-left"></i> View Products</a>
+        </div>
+    </div>
 </div>
 {% endblock %}
