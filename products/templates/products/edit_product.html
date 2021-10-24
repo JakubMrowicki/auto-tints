@@ -13,6 +13,7 @@
                 {{ form|crispy }}
                 <div class="text-center my-3">
                     <a href="{% url 'detail_page' product.id %}" class="btn btn-link">Cancel</a>
+                    <a href="{% url 'delete_product' product.id %}" class="btn btn-danger">Delete Product</a>
                     <button type="submit" class="btn btn-black">Update Product</button>
                 </div>
             </form>
