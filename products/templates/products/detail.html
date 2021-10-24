@@ -27,6 +27,9 @@
                     <a href="{% url 'products' %}" class="btn btn-outline-black"><i class="fas fa-arrow-left"></i> Keep
                         Shopping</a>
                     <input type="submit" class="btn btn-outline-black" value="Add to Cart">
+                    {% if request.user.is_superuser %}
+                        <a href="{% url 'edit_product' product.id %}" class="btn btn-outline-black"><i class="fas fa-edit"></i> Edit Product</a>
+                    {% endif %}
                 </div>
                 <input type="hidden" name="redirect_url" value="{{ request.path }}">
             </form>

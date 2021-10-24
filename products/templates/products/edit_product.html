@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="container">
+    <h1 class="text-center mt-5">Product Management</h1>
+    <div class="row">
+        <div class="col-12 col-md-6">
+            <h2>Edit Product</h2>
+            <hr>
+            <form action="{% url 'edit_product' product.id %}" method="POST" enctype="multipart/form-data" class="form-control mb-5">
+                {% csrf_token %}
+                {{ form|crispy }}
+                <div class="text-center my-3">
+                    <a href="{% url 'detail_page' product.id %}" class="btn btn-link">Cancel</a>
+                    <button type="submit" class="btn btn-black">Update Product</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

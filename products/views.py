@@ -64,8 +64,34 @@ def add_product(request):
             form.save()
             messages.success(request, 'Product saved successfully.')
             return redirect(reverse('add_product'))
-    form = ProductForm()
+        else:
+            messages.error(request, 'Please ensure the form is valid.')
+    else:
+        form = ProductForm()
     context = {
         'form': form
     }
     return render(request, 'products/add_product.html', context)
+
+
+def edit_product(request, product_id):
+    """
+    Allow admin to edit a product
+    """
+
+    product = get_object_or_404(Product, pk=product_id)
+    if request.method == 'POST':
+        form = ProductForm(request.POST, request.FILES, instance=product)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Product updated successfully.')
+            return redirect(reverse('detail_page', args=[product.id]))
+        else:
+            messages.error(request, 'Please ensure the form is valid.')
+    else:
+        form = ProductForm(instance=product)
+    context = {
+        'form': form,
+        'product': product
+    }
+    return render(request, 'products/edit_product.html', context)
