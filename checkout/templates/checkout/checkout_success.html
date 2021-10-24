@@ -33,6 +33,9 @@
                         {% if order.street_address2 %}
                             {{ order.street_address2 }}<br>
                         {% endif %}
+                        {% if order.town_or_city %}
+                            {{ order.town_or_city }}<br>
+                        {% endif %}
                         {% if order.county %}
                             {{ order.county }}<br>
                         {% endif %}
