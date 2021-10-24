@@ -21,7 +21,7 @@ def profile(request):
             form.save()
             messages.success(request, 'Your details have been updated.')
     form = UserProfileForm(instance=profile)
-    orders = profile.orders.all()
+    orders = profile.orders.all().order_by('-date')
     context = {
         'orders': orders,
         'form': form
