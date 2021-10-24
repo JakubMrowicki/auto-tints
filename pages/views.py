@@ -20,7 +20,10 @@ def profile(request):
         if form.is_valid():
             form.save()
             messages.success(request, 'Your details have been updated.')
-    form = UserProfileForm(instance=profile)
+        else:
+            messages.error(request, 'Please ensure the form is valid.')
+    else:
+        form = UserProfileForm(instance=profile)
     orders = profile.orders.all().order_by('-date')
     context = {
         'orders': orders,
