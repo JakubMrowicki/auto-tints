@@ -40,7 +40,7 @@ Viewing The Store:
 + 'A shopper: I want to view a list of products in each category'
 + 'A shopper: I want to view product details'
 + 'A shopper: I want to search & sort items'
-+ 'A shopper: I want to see my total at all times'
++ 'A shopper: I want to see my cart item total at all times'
 + 'A shopper: I want to see frequently asked questions'
 + 'A shopper: I want to see contact details for the store'
 + 'A shopper: I want to see an about section'
@@ -81,24 +81,74 @@ User Profiles
 ---
 ## Structure Plane
 ### Information Architecture
-* 
+* Scroll to item in FAQ
 
 ### Data Structure
-__'user' Collection__
+__'userProfile' Model__
 key | type | purpose | required?
 --- | --- | --- | ---
+user | OneToOneField | Yes
+default_phone_number | CharField | No
+default_street_address1 | CharField | No
+default_street_address2 | CharField | No
+default_town_or_city | CharField | No
+default_county | CharField | No
+default_postcode | CharField | No
+default_country | CountryField | No
 
-__'category' Collection__
+__'Category' Model__
 key | type | purpose | required?
 --- | --- | --- | ---
+name | CharField | No
+description | CharField | No
+friendly_name | CharField | No
+image | ImageField | No
 
-__'product' Collection__
+__'Product' Model__
 key | type | purpose | required?
 --- | --- | --- | ---
+category | ForeignKey | No
+sku | CharField | No
+name | CharField | No
+description | TextField | No
+price | DecimalField | Yes
+image | ImageField | No
 
-__'order' Collection__
+__'Order' Model__
 key | type | purpose | required?
 --- | --- | --- | ---
+order_number | CharField | Yes
+user_profile | ForeignKey | No
+full_name | CharField | Yes
+email | EmailField | Yes
+phone_number | CharField | Yes
+country | CountryField | Yes
+postcode | CharField | No
+town_or_city | CharField | Yes
+street_address1 | CharField | Yes
+street_address2 | CharField | No
+county | CharField | No
+date | DateTimeField | Yes(auto)
+delivery_cost | DecimalField | Yes
+order_total | DecimalField | Yes
+grand_total | DecimalField | Yes
+original_cart | TextField | Yes
+stripe_pid | CharField | Yes
+
+__'Order' Model__
+key | type | purpose | required?
+--- | --- | --- | ---
+order | ForeignKey | Yes
+product | ForeignKey | Yes
+quantity | IntegerField | Yes
+lineitem_total | DecimalField | Yes
+
+__'Faq' Model__
+key | type | purpose | required?
+--- | --- | --- | ---
+collapse_id | CharField | Yes
+title | CharField | Yes
+body | TextField | Yes
 
 ### Interaction Design
 * Check out with or without an account.
