@@ -10,7 +10,7 @@ class OrderForm(forms.ModelForm):
                   'street_address1', 'street_address2',
                   'town_or_city', 'postcode', 'county',
                   'country')
-    
+
     def __init__(self, *args, **kwargs):
         """
         Add placeholders, classses and remove labels

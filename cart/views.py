@@ -43,8 +43,9 @@ def edit_item(request, item_id):
 
     if request.POST.get('delete_button'):
         if item_id in list(cart.keys()):
-            messages.success(request, f'Removed {product.name} from your cart.')
+            messages.success(request, f'Removed \
+                                        {product.name} from your cart.')
             del cart[item_id]
-    
+
     request.session['cart'] = cart
     return redirect(redirect_url)

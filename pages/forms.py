@@ -7,7 +7,7 @@ class UserProfileForm(forms.ModelForm):
     class Meta:
         model = UserProfile
         exclude = {'user'}
-    
+
     def __init__(self, *args, **kwargs):
         """
         Add placeholders, classses and remove labels

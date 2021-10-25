@@ -12,5 +12,6 @@ class FaqAdmin(admin.ModelAdmin):
     fields = ('collapse_id', 'title', 'body')
     list_display = ('title', 'collapse_id')
 
+
 admin.site.register(UserProfile, UserProfileAdmin)
 admin.site.register(Faq, FaqAdmin)
