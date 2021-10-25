@@ -85,8 +85,8 @@ User Profiles
 
 ### Data Structure
 __'userProfile' Model__
-key | type | purpose | required?
---- | --- | --- | ---
+key | type | required?
+--- | --- | ---
 user | OneToOneField | Yes
 default_phone_number | CharField | No
 default_street_address1 | CharField | No
@@ -97,16 +97,16 @@ default_postcode | CharField | No
 default_country | CountryField | No
 
 __'Category' Model__
-key | type | purpose | required?
---- | --- | --- | ---
+key | type | required?
+--- | --- | ---
 name | CharField | No
 description | CharField | No
 friendly_name | CharField | No
 image | ImageField | No
 
 __'Product' Model__
-key | type | purpose | required?
---- | --- | --- | ---
+key | type | required?
+--- | --- | ---
 category | ForeignKey | No
 sku | CharField | No
 name | CharField | No
@@ -115,8 +115,8 @@ price | DecimalField | Yes
 image | ImageField | No
 
 __'Order' Model__
-key | type | purpose | required?
---- | --- | --- | ---
+key | type | required?
+--- | --- | ---
 order_number | CharField | Yes
 user_profile | ForeignKey | No
 full_name | CharField | Yes
@@ -136,16 +136,16 @@ original_cart | TextField | Yes
 stripe_pid | CharField | Yes
 
 __'Order' Model__
-key | type | purpose | required?
---- | --- | --- | ---
+key | type | required?
+--- | --- | ---
 order | ForeignKey | Yes
 product | ForeignKey | Yes
 quantity | IntegerField | Yes
 lineitem_total | DecimalField | Yes
 
 __'Faq' Model__
-key | type | purpose | required?
---- | --- | --- | ---
+key | type | required?
+--- | --- | ---
 collapse_id | CharField | Yes
 title | CharField | Yes
 body | TextField | Yes
@@ -165,15 +165,16 @@ Wireframes can be found [here](https://github.com/JakubMrowicki/auto-tints/tree/
 __Primary Colours:__
 Colour | Colour Code | Preview
 --- | --- | :---:
-Light-Blue | #336AFF | ![#F26432](https://via.placeholder.com/15/336AFF/000000?text=+)
-Green | #2B9348 | ![!2B9348](https://via.placeholder.com/15/2B9348/000000?text=+)
-Red | #D90429 | ![#D90429](https://via.placeholder.com/15/D90429/000000?text=+)
+Black | #000000 | ![#000000](https://via.placeholder.com/15/000000/000000?text=+)
+Grey | #212529 | ![!212529](https://via.placeholder.com/15/212529/000000?text=+)
+White | #FFFFFF | ![#FFFFFF](https://via.placeholder.com/15/FFFFFF/000000?text=+)
 
 
 __Text Body Colours:__
 Colour | Colour Code | Preview
 --- | --- | :---:
-Charcoal | #2c3e50 | ![#2c3e50](https://via.placeholder.com/15/2c3e50/000000?text=+)
+White | #ffffff | ![#ffffff](https://via.placeholder.com/15/ffffff/000000?text=+)
+Black | #212529 | ![#212529](https://via.placeholder.com/15/212529/000000?text=+)
 
 
 ### Typography
