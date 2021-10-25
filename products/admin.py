@@ -10,8 +10,13 @@ class CategoryAdmin(admin.ModelAdmin):
     ordering = ('name',)
 
 
-# class ProductAdmin(admin.ModelAdmin):
+class ProductAdmin(admin.ModelAdmin):
+    list_display = [
+        'name',
+        'price'
+    ]
+    ordering = ('name',)
 
 
 admin.site.register(Category, CategoryAdmin)
-admin.site.register(Product)
+admin.site.register(Product, ProductAdmin)
