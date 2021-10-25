@@ -28,7 +28,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY', '')
 DEBUG = os.environ.get('DEVELOPMENT', 'True')
 # DEBUG = False
 
-ALLOWED_HOSTS = ['localhost']
+ALLOWED_HOSTS = ['auto-tints.herokuapp.com', 'localhost']
 # Change For Prod ################################################################################
 
 
