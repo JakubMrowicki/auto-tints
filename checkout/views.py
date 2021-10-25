@@ -80,12 +80,12 @@ def checkout(request):
     else:
         stripe_public_key = settings.STRIPE_PUBLIC_KEY
         stripe_secret_key = settings.STRIPE_SECRET_KEY
-        
+
         cart = request.session.get('cart', {})
         if not cart:
             messages.error(request, 'Your cart is empty, add some items to checkout.')
             return redirect(reverse('products'))
-        
+
         if request.user.is_authenticated:
             try:
                 profile = UserProfile.objects.get(user=request.user)

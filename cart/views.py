@@ -2,7 +2,6 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 from products.models import Product
 
-# Create your views here.
 
 def view_cart(request):
     """ View to return cart page """
@@ -22,7 +21,7 @@ def add_to_cart(request, item_id):
         cart[item_id] += quantity
     else:
         cart[item_id] = quantity
-    
+
     messages.success(request, f'Added {product.name} to your cart.')
     request.session['cart'] = cart
     return redirect(redirect_url)
@@ -38,7 +37,8 @@ def edit_item(request, item_id):
     if request.POST.get('update_button'):
         quantity = request.POST.get('quantity')
         if item_id in list(cart.keys()):
-            messages.success(request, f'Updated quantity of {product.name} to {quantity}.')
+            messages.success(request, f'Updated quantity \
+                                        of {product.name} to {quantity}.')
             cart[item_id] = quantity
 
     if request.POST.get('delete_button'):

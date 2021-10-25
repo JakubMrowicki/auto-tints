@@ -4,7 +4,6 @@ from django.contrib.auth.decorators import login_required
 from .models import Product, Category
 from .forms import ProductForm
 
-# Create your views here.
 
 def all_products(request):
     """ Return a page which shows all products """
@@ -12,7 +11,6 @@ def all_products(request):
     products = Product.objects.all()
     categories = None
     query = None
-
 
     if request.GET:
         if 'category' in request.GET:
@@ -23,11 +21,13 @@ def all_products(request):
             query = request.GET['q']
             if not query:
                 products = None
-                messages.error(request, "You didn't enter any search criteria!")
+                messages.error(request, "You didn't enter any \
+                                         search criteria!")
                 return redirect(reverse('products'))
-            
-            products = products.filter(name__icontains=query, description__icontains=query)
-    
+
+            products = products.filter(name__icontains=query,
+                                       description__icontains=query)
+
     context = {
         'products': products,
         'query': query,
@@ -63,7 +63,7 @@ def add_product(request):
     if not request.user.is_superuser:
         messages.error(request, 'Sorry, this is a restricted area.')
         return redirect(reverse('home'))
-    
+
     if request.method == 'POST':
         form = ProductForm(request.POST, request.FILES)
         if form.is_valid():
@@ -89,7 +89,7 @@ def edit_product(request, product_id):
     if not request.user.is_superuser:
         messages.error(request, 'Sorry, this is a restricted area.')
         return redirect(reverse('home'))
-    
+
     product = get_object_or_404(Product, pk=product_id)
     if request.method == 'POST':
         form = ProductForm(request.POST, request.FILES, instance=product)
@@ -117,7 +117,7 @@ def delete_product(request, product_id):
     if not request.user.is_superuser:
         messages.error(request, 'Sorry, this is a restricted area.')
         return redirect(reverse('home'))
-    
+
     product = get_object_or_404(Product, pk=product_id)
     product.delete()
     messages.success(request, 'Product deleted successfully.')

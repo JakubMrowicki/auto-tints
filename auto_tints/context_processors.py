@@ -2,6 +2,7 @@ from products.models import Category, Product
 from django.conf import settings
 from django.shortcuts import get_object_or_404
 
+
 def get_categories(request):
     """ Get a list of all available categories """
     categories = Category.objects.all()
@@ -32,14 +33,13 @@ def cart_contents(request):
             'quantity': quantity,
             'total_price': product.price * int(quantity)
         })
-    
     grand_total = total + settings.DELIVERY_CHARGE
 
     context = {
         'cart_items': cart_items,
         'cart_items_count': cart_items_count,
         'total': total,
-        'grand_total' : grand_total,
+        'grand_total': grand_total,
         'delivery_charge': settings.DELIVERY_CHARGE,
     }
 

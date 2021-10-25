@@ -4,17 +4,19 @@
 {% block content %}
 <div class="container">
     <h1 class="text-center my-5">Frequently Asked Questions</h1>
+    {% if faq %}
     <div class="accordion mx-md-5 mb-5" id="accordion">
         {% for item in faq %}
             <div class="accordion-item">
                 <h2 class="accordion-header" id="{{ item.collapse_id }}heading">
                     <button class="accordion-button fs-2 collapsed" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#{{ item.collapse_id }}" aria-expanded="false" aria-controls="{{ item.collapse_id }}">
+                        data-bs-target="#{{ item.collapse_id }}" aria-expanded="false"
+                        aria-controls="{{ item.collapse_id }}">
                         {{ item.title }}
                     </button>
                 </h2>
-                <div id="{{ item.collapse_id }}" class="accordion-collapse collapse" aria-labelledby="{{ item.collapse_id }}heading"
-                    data-bs-parent="#accordion">
+                <div id="{{ item.collapse_id }}" class="accordion-collapse collapse"
+                    aria-labelledby="{{ item.collapse_id }}heading" data-bs-parent="#accordion">
                     <div class="accordion-body">
                         <p>{{ item.body }}</p>
                     </div>
@@ -22,7 +24,9 @@
             </div>
         {% endfor %}
     </div>
-
+    {% else %}
+        <p>No frequently asked questions available.</p>
+    {% endif %}
 </div>
 {% endblock %}
 

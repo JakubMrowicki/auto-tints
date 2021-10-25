@@ -28,11 +28,8 @@ SECRET_KEY = os.environ.get('SECRET_KEY', '')
 DEBUG = 'DEVELOPMENT' in os.environ
 
 ALLOWED_HOSTS = ['auto-tints.herokuapp.com', 'localhost']
-# Change For Prod ################################################################################
-
 
 # Application definition
-
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -42,18 +39,18 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.sites',
 
-    #allauth apps
+    # allauth apps
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
 
-    #crispy forms
+    # crispy forms
     'crispy_forms',
 
-    #other apps
+    # other apps
     'storages',
 
-    #custom apps
+    # custom apps
     'home',
     'products',
     'cart',
