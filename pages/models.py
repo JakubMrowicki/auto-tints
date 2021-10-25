@@ -33,3 +33,13 @@ def create_or_update_user_profile(sender, instance, created, **kwargs):
         UserProfile.objects.create(user=instance)
     # save on update
     instance.userprofile.save()
+
+
+class Faq(models.Model):
+    """
+    A model for Frequently asked questions items
+    """
+
+    collapse_id = models.CharField(max_length=150, null=False, blank=False)
+    title = models.CharField(max_length=150, null=False, blank=False)
+    body = models.TextField(null=False, blank=False)

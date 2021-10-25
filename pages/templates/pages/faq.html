@@ -5,72 +5,22 @@
 <div class="container">
     <h1 class="text-center my-5">Frequently Asked Questions</h1>
     <div class="accordion mx-md-5 mb-5" id="accordion">
-        <div class="accordion-item">
-            <h2 class="accordion-header" id="flush-headingOne">
-                <button class="accordion-button fs-2 collapsed" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#who-are-we" aria-expanded="false" aria-controls="who-are-we">
-                    What is Auto-Tints?
-                </button>
-            </h2>
-            <div id="who-are-we" class="accordion-collapse collapse" aria-labelledby="flush-headingOne"
-                data-bs-parent="#accordion">
-                <div class="accordion-body">
-                    <p>Auto-Tints is an automotive window film and tool supplier in Dublin. We
-                        pride ourselves in the quality of our product and friendly customer service.</p>
+        {% for item in faq %}
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="{{ item.collapse_id }}heading">
+                    <button class="accordion-button fs-2 collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#{{ item.collapse_id }}" aria-expanded="false" aria-controls="{{ item.collapse_id }}">
+                        {{ item.title }}
+                    </button>
+                </h2>
+                <div id="{{ item.collapse_id }}" class="accordion-collapse collapse" aria-labelledby="{{ item.collapse_id }}heading"
+                    data-bs-parent="#accordion">
+                    <div class="accordion-body">
+                        <p>{{ item.body }}</p>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="accordion-item">
-            <h2 class="accordion-header" id="flush-headingTwo">
-                <button class="accordion-button fs-2 collapsed" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#returns" aria-expanded="false" aria-controls="returns">
-                    What's your return policy?
-                </button>
-            </h2>
-            <div id="returns" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo"
-                data-bs-parent="#accordion">
-                <div class="accordion-body">
-                    <p>You have 30 calendar days to return an item from the date you received it.
-                        To be eligible for a return, your item must be unused and in the same condition that you
-                        received it.</p>
-                    <p>Your item must be in the original packaging.</p>
-                    <p>Your item needs to have the receipt or proof of purchase.</p>
-                </div>
-            </div>
-        </div>
-        <div class="accordion-item">
-            <h2 class="accordion-header" id="flush-headingThree">
-                <button class="accordion-button fs-2 collapsed" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#refunds" aria-expanded="false" aria-controls="refunds">
-                    What's your refund policy?
-                </button>
-            </h2>
-            <div id="refunds" class="accordion-collapse collapse" aria-labelledby="flush-headingThree"
-                data-bs-parent="#accordion">
-                <div class="accordion-body">
-                    <p>Once we receive your item, we will inspect it and notify you that we have received your returned
-                        item. We will immediately notify you on the status of your refund after inspecting the item.</p>
-                    <p>If your return is approved, we will initiate a refund to your credit card (or original method of
-                        payment).</p>
-                    <p>You will receive the credit within 14 days, depending on your card issuer's
-                        policies</p>
-                </div>
-            </div>
-        </div>
-        <div class="accordion-item">
-            <h2 class="accordion-header" id="flush-headingFour">
-                <button class="accordion-button fs-2 collapsed" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#payment-methods" aria-expanded="false" aria-controls="payment-methods">
-                    What payment methods do you accept?
-                </button>
-            </h2>
-            <div id="payment-methods" class="accordion-collapse collapse" aria-labelledby="flush-headingFour"
-                data-bs-parent="#accordion">
-                <div class="accordion-body">
-                    <p>We accept payments by debit or credit card. Payments are processed by Stripe.</p>
-                </div>
-            </div>
-        </div>
+        {% endfor %}
     </div>
 
 </div>
