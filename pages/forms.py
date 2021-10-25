@@ -3,7 +3,7 @@ from .models import UserProfile
 
 
 class UserProfileForm(forms.ModelForm):
-    """ Order form to be compeleted by user on checkout """
+    """ Order form to be compeleted by user on profile """
     class Meta:
         model = UserProfile
         exclude = {'user'}
