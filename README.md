@@ -1,6 +1,6 @@
 # Auto Tints - Automotive Window Tinting Supplies
 
-![AmIResponsive]()
+![AmIResponsive](https://i.imgur.com/AbbDmYY.png)
 
 [View Project on Heroku]()
 
