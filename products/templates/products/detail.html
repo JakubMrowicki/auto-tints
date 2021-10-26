@@ -47,6 +47,9 @@
                     </h4>
                     <p>{{ review.body }}</p>
                     <small class="text-muted">Date: {{ review.date }}</small>
+                    {% if request.user == review.user.user or request.user.is_superuser %}
+                    <a href="{% url 'delete_review' review.id %}" class="text-danger">Delete</a>
+                    {% endif %}
                 </div>
             {% empty %}
                 <p class="text-muted">No reviews yet.</p>
@@ -60,7 +63,7 @@
                 </div>
             </form>
             {% else %}
-                <p class="text-muted">You must be logged in to review a product.</p>
+                <p class="text-muted">You must be <a href="{% url 'account_login' %}" class="text-decoration-underline">logged in</a> to review a product.</p>
             {% endif %}
         </div>
     </div>

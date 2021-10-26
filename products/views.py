@@ -84,6 +84,24 @@ def add_review(request, product_id):
 
 
 @login_required
+def delete_review(request, review_id):
+    """
+    Delete a review
+    """
+
+    review = get_object_or_404(Review, pk=review_id)
+    product = review.product
+    review_owner = review.user.user == request.user
+    print(user)
+    if review_owner or request.user.is_superuser:
+        review.delete()
+        messages.success(request, 'Review deleted successfully.')
+    else:
+        messages.error(request, 'You cannot delete this review')
+    return redirect(reverse('detail_page', args=[product.id]))
+
+
+@login_required
 def add_product(request):
     """
     Allow admin to add product
