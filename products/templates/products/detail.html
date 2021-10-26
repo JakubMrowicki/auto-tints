@@ -33,6 +33,35 @@
                 </div>
                 <input type="hidden" name="redirect_url" value="{{ request.path }}">
             </form>
+            <h4 class="mt-3">Latest Reviews</h4>
+            <hr class="mx-auto mx-md-0">
+            {% for review in reviews %}
+                <div class="py-2 px-2 mb-1 rounded {% if forloop.counter|divisibleby:"2" %}text-end bg-light{% endif %}">
+                    <h4>
+                        {{ review.user }} {% if review.recommend %}would recommend.{% else %}would not recommend.{% endif %}
+                        {% if review.recommend %}
+                            <i class="fas fa-thumbs-up"> </i>
+                        {% else %}
+                            <i class="fas fa-thumbs-down"></i>
+                        {% endif %}
+                    </h4>
+                    <p>{{ review.body }}</p>
+                    <small class="text-muted">Date: {{ review.date }}</small>
+                </div>
+            {% empty %}
+                <p class="text-muted">No reviews yet.</p>
+            {% endfor %}
+            {% if user.is_authenticated %}
+            <form action="{% url 'add_review' product.id %}" method="POST" class="form-control text-start py-3">
+                {% csrf_token %}
+                {{ form|crispy }}
+                <div class="text-end">
+                    <button type="submit" class="btn btn-black">Submit</button>
+                </div>
+            </form>
+            {% else %}
+                <p class="text-muted">You must be logged in to review a product.</p>
+            {% endif %}
         </div>
     </div>
     {% else %}

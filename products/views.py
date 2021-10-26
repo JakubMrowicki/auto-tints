@@ -1,8 +1,9 @@
 from django.shortcuts import render, get_object_or_404, reverse, redirect
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from .models import Product, Category
-from .forms import ProductForm
+from .models import Product, Category, Review
+from pages.models import UserProfile
+from .forms import ProductForm, ReviewForm
 
 
 def all_products(request):
@@ -40,11 +41,15 @@ def product_detail(request, product_id):
     """ Return a product detail page """
 
     query = Product.objects.filter(pk=product_id)
+    reviews = Review.objects.filter(product=product_id).order_by('-date')
+    form = ReviewForm()
     if query.exists():
         product = query.get()
 
         context = {
             'product': product,
+            'reviews': reviews[:5],
+            'form': form
         }
     else:
         context = {
@@ -52,6 +57,30 @@ def product_detail(request, product_id):
         }
 
     return render(request, 'products/detail.html', context)
+
+
+@login_required
+def add_review(request, product_id):
+    """
+    Add a product review
+    """
+
+    user = get_object_or_404(UserProfile, user=request.user)
+    product = get_object_or_404(Product, pk=product_id)
+    if request.method == 'POST':
+        form = ReviewForm(request.POST)
+        if form.is_valid():
+            form = form.save(commit=False)
+            form.user = user
+            form.product = product
+            form.save()
+            messages.success(request, 'Thank you for your review!')
+        else:
+            messages.error(request, 'Something went wrong with your review.\
+                                     Try again.')
+    else:
+        messages.info(request, 'Invalid action.')
+    return redirect(reverse('detail_page', args=[product.id]))
 
 
 @login_required

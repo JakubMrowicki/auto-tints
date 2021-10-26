@@ -2,6 +2,7 @@
 Models for the products app.
 """
 from django.db import models
+from pages.models import UserProfile
 
 
 class Category(models.Model):
@@ -25,7 +26,7 @@ class Category(models.Model):
 
 class Product(models.Model):
     """ Model for Products """
-    category = models.ForeignKey('Category', null=True,
+    category = models.ForeignKey(Category, null=True,
                                  blank=True, on_delete=models.SET_NULL)
     sku = models.CharField(max_length=254, blank=True, default='')
     name = models.CharField(max_length=254)
@@ -36,3 +37,20 @@ class Product(models.Model):
     def __str__(self):
         """ return product name """
         return str(self.name)
+
+
+class Review(models.Model):
+    """ Model for Reviews """
+
+    product = models.ForeignKey(Product, null=False,
+                                blank=False, on_delete=models.CASCADE)
+    user = models.ForeignKey(UserProfile, null=False,
+                             blank=False, on_delete=models.CASCADE)
+    body = models.TextField(max_length=500, null=False,
+                            blank=False)
+    date = models.DateTimeField(auto_now_add=True)
+    recommend = models.BooleanField(null=False, blank=False)
+
+    def __str__(self):
+        """ return review body """
+        return self.body
