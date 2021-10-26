@@ -16,17 +16,18 @@
         </div>
         <div class="col-12 col-md-6">
             <h1 class="mt-5">Order History</h1>
-            <table class="table order-history">
-                <thead>
-                  <tr>
-                    <th scope="col">Date</th>
-                    <th scope="col">Order No.</th>
-                    <th scope="col">Items</th>
-                    <th scope="col">Total</th>
-                  </tr>
-                </thead>
-                <tbody>
-                    {% for order in orders %}
+            <div class="order-history">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Date</th>
+                            <th scope="col">Order No.</th>
+                            <th scope="col">Items</th>
+                            <th scope="col">Total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for order in orders %}
                         <tr>
                             <th scope="row">
                                 <a href="{% url 'order_history' order.order_number %}">{{ order.date }}</a>
@@ -37,7 +38,7 @@
                             <td>
                                 <ul class="list-unstyled">
                                     {% for item in order.lineitems.all %}
-                                        <li class="small">{{ item.product.name }} x{{ item.quantity }}</li>
+                                    <li class="small">{{ item.product.name }} x{{ item.quantity }}</li>
                                     {% endfor %}
                                 </ul>
                             </td>
@@ -45,28 +46,29 @@
                                 €{{ order.grand_total }}
                             </td>
                         </tr>
-                    {% endfor %}
-                </tbody>
-              </table>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 </div>
 {% endblock %}
 
 {% block postloadjs %}
-    {{ block.super }}
-    <script>
-        let countrySelected = $('#id_default_country').val();
-        if(!countrySelected) {
-            $('#id_default_country').css('color', '#707585');
-        };
-        $('#id_default_country').change(function() {
-            countrySelected = $(this).val();
-            if(!countrySelected) {
-                $(this).css('color', '#707585');
-            } else {
-                $(this).css('color', '#000');
-            }
-        });
-    </script>
+{{ block.super }}
+<script>
+    let countrySelected = $('#id_default_country').val();
+    if (!countrySelected) {
+        $('#id_default_country').css('color', '#707585');
+    };
+    $('#id_default_country').change(function () {
+        countrySelected = $(this).val();
+        if (!countrySelected) {
+            $(this).css('color', '#707585');
+        } else {
+            $(this).css('color', '#000');
+        }
+    });
+</script>
 {% endblock %}
