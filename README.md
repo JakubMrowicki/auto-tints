@@ -193,6 +193,27 @@ Black | #212529 | ![#212529](https://via.placeholder.com/15/212529/000000?text=+
 
 "[Open Sans](https://fonts.google.com/specimen/Open+Sans)" will be used for the body.
 # 4: Features
+* Products
+    * Product Detail page
+        * Admin: Edit/Delete Product
+        * Reviews
+            * Add or remove you own reviews
+            * Admin: Remove any review
+* Categories
+    * View Categories on homepage/navbar
+* Cart
+    * View cart
+    * Edit and update cart items
+    * Calculate total cost
+* Checkout
+    * Complete an order using Stripe payments
+    * Email order to user
+* FAQ
+    * Admin: Manage FAQ sections
+* Profile
+    * Update saved delivery info
+    * View order history
+    * View previous orders
 
 # 5: Technologies Used
 This project uses the following technologies:
@@ -212,7 +233,7 @@ This project uses the following technologies:
 
 # 6: Trials & Testing
 * Website was run through the Mobile-Friendly Test by Google and was deemed Mobile Friendly. To further test this, I opened the website on my phone as well as friends and co-workers phones.
-    * [Google Mobile-Friendly Test](https://search.google.com/test/mobile-friendly?id=FR_v3_v6Gc652veMM-1JZg)
+    * [Google Mobile-Friendly Test](https://search.google.com/test/mobile-friendly/result?id=kQDvopK48p9ZjX_PgRgvqQ)
 * Validated HTML, CSS and JS using validators.
 * Checked that all links are working.
 * Ran style.css through [Autoprefixer](https://autoprefixer.github.io/) to add vendor prefixes.
