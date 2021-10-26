@@ -83,7 +83,8 @@ def add_review(request, product_id):
         else:
             messages.info(request, 'Invalid action.')
     else:
-        messages.warning(request, 'You already left a review for this product.')
+        messages.warning(request, 'You already left a review \
+            for this product.')
     return redirect(reverse('detail_page', args=[product.id]))
 
 
