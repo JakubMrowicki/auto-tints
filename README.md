@@ -237,6 +237,7 @@ This project uses the following technologies:
 * Validated HTML, CSS and JS using validators.
 * Checked that all links are working.
 * Ran style.css through [Autoprefixer](https://autoprefixer.github.io/) to add vendor prefixes.
+* [TESTING.md](https://github.com/JakubMrowicki/auto-tints/tree/main/TESTING.md) for more
 
 # 7: Problem Areas & Solutions
 * You could pin more than 5 entries if you pinned it upon creation with 5 pins already present.
@@ -248,6 +249,8 @@ HTML was Validated using the [W3 Validator](https://validator.w3.org/).
 CSS was Validated using [Jigsaw W3 Validator](https://jigsaw.w3.org/css-validator/) and returned no errors.
 
 JavaScript was Validated using [JSHint](https://jshint.com/) with no major errors.
+
+bash command ```flake8 --exclude=*/migrations/*``` was used to tidy up Python code.
 
 # 9: Website Deployment
 This project is deployed to the public by using Heroku. This is how I did it.
