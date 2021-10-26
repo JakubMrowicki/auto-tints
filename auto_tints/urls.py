@@ -29,3 +29,4 @@ urlpatterns = [
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 handler404 = "auto_tints.views.page_not_found_view"
+handler500 = "auto_tints.views.server_error_view"
