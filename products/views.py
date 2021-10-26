@@ -67,19 +67,23 @@ def add_review(request, product_id):
 
     user = get_object_or_404(UserProfile, user=request.user)
     product = get_object_or_404(Product, pk=product_id)
-    if request.method == 'POST':
-        form = ReviewForm(request.POST)
-        if form.is_valid():
-            form = form.save(commit=False)
-            form.user = user
-            form.product = product
-            form.save()
-            messages.success(request, 'Thank you for your review!')
+    already_reviewed = Review.objects.filter(user=user, product=product)
+    if not already_reviewed:
+        if request.method == 'POST':
+            form = ReviewForm(request.POST)
+            if form.is_valid():
+                form = form.save(commit=False)
+                form.user = user
+                form.product = product
+                form.save()
+                messages.success(request, 'Thank you for your review!')
+            else:
+                messages.error(request, 'Something went wrong with your review.\
+                                        Try again.')
         else:
-            messages.error(request, 'Something went wrong with your review.\
-                                     Try again.')
+            messages.info(request, 'Invalid action.')
     else:
-        messages.info(request, 'Invalid action.')
+        messages.warning(request, 'You already left a review for this product.')
     return redirect(reverse('detail_page', args=[product.id]))
 
 
@@ -92,7 +96,6 @@ def delete_review(request, review_id):
     review = get_object_or_404(Review, pk=review_id)
     product = review.product
     review_owner = review.user.user == request.user
-    print(user)
     if review_owner or request.user.is_superuser:
         review.delete()
         messages.success(request, 'Review deleted successfully.')
