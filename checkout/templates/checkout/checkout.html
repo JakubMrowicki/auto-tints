@@ -17,15 +17,7 @@
                             €{{ item.product.price|floatformat:2 }}</small></h2>
                     <small class="d-block">SKU: {{ item.product.sku }}</small>
                     <span class="d-block">Item Total: <b>€{{ item.total_price|floatformat:2 }}</b></span>
-                    <form action="{% url 'edit_item' item.product.id %}" method="post">
-                        {% csrf_token %}
-                        <label for="quantity" class="form-label">Quantity</label>
-                        <input type="number" name="quantity" min="1" max="99" value="{{ item.quantity }}"
-                            class="form-control" style="max-width: 100px;" id="quantity" aria-describedby="quantity">
-                        <input type="submit" class="btn btn-link" name="update_button" value="Update">
-                        <input type="submit" class="btn btn-link" name="delete_button" value="Remove">
-                        <input type="hidden" name="redirect_url" value="{{ request.path }}">
-                    </form>
+                    <span class="d-block">Quantity: <b>{{ item.quantity }}</b></span>
                 </div>
             </div>
             <div class="py-2 d-flex flex-column align-items-center d-md-none">
