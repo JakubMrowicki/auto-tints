@@ -40,6 +40,7 @@ pages is a custom django app which handles misc pages on the website such as the
 
 ## Tests
 
+
 # products
 ## What is products?
 products is a custom django app which handles products, categories and product reviews.
@@ -51,3 +52,6 @@ products is a custom django app which handles products, categories and product r
 admin is a native django app which is the admin panel for django driven applications.
 
 ## Tests
+Test Description | Result | Comment
+--- | --- | ---
+Do all models have informative columns? | Yes | All models in the admin are easy to sort through
