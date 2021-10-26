@@ -32,7 +32,14 @@ checkout is a custom django app which handles checkout procedures for the store.
 ## What is home?
 home is a custom django app which handles the home page content. In this case it's a category view.
 
-## Tests
+## / Tests
+Test Description | Result | Comment
+--- | --- | ---
+Does visiting this page show all categories? | Yes | -
+Is the page responsive on mobile? | Yes | -
+Does clicking on a category show all products from said category? | Yes | -
+Does the page have a navigation bar and footer? | Yes | Responsive
+Does the page have an about section? | Yes | -
 
 # pages
 ## What is pages?
