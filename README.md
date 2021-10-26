@@ -150,6 +150,15 @@ collapse_id | CharField | Yes
 title | CharField | Yes
 body | TextField | Yes
 
+__'Review' Model__
+key | type | required?
+--- | --- | ---
+product | ForeignKey | Yes
+user | ForeignKey | Yes
+body | TextField | Yes
+date | DateTimeField | Yes(auto)
+recommend | BooleanField | Yes
+
 ### Interaction Design
 * Check out with or without an account.
 * Search & sort functionality
