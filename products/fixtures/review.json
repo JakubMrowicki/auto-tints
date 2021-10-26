@@ -1,0 +1,1 @@
+[{"model": "products.review", "pk": 2, "fields": {"product": 1, "user": 2, "body": "don't like it", "date": "2021-10-26T00:13:55.715Z", "recommend": false}}]

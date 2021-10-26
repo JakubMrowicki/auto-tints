@@ -2,7 +2,7 @@
 
 ![AmIResponsive](https://i.imgur.com/AbbDmYY.png)
 
-[View Project on Heroku]()
+[View Project on Heroku](https://auto-tints.herokuapp.com/)
 
 
 The goal of this project is to create an __online store__ which offers automotive window tinting supplies and tools.
@@ -168,6 +168,7 @@ recommend | BooleanField | Yes
 ## Skeleton Plane
 Wireframes can be found [here](https://github.com/JakubMrowicki/auto-tints/tree/main/wireframes)
 
+The footer will contain copyright information.
 ---
 ## Surface Plane
 ### Colours
@@ -230,16 +231,76 @@ JavaScript was Validated using [JSHint](https://jshint.com/) with no major error
 # 9: Website Deployment
 This project is deployed to the public by using Heroku. This is how I did it.
 
-1. Create a new app using the dashboard on Heroku.
-2. Deployment method: GitHub for automatic deployment.
-3. Go to your app settings tab and configure variables to match __env.py__ file.
-4. Ensure that your repository contains the requirements.txt and Procfile files.
-5. You can now enable automatic deployment on Heroku.
-6. Scrolling down the page, you can click deploy branch.
+To deploy this app you will need an [AWS account](https://aws.amazon.com/), a [Heroku account](https://signup.heroku.com/login) and a [Stripe account](https://dashboard.stripe.com/register). You can follow the links to register with those service providers.
 
-[View On Heroku]()
+Also, make sure you install all the app dependencies from ```requirements.txt``` and that no files such as the ```Procfile```are missing before you begin.
+
+AWS Setup:
+1. Log in to your AWS account and search for S3.
+2. Create an S3 Bucket for your files and unblock public access to it, take note of your ARN here.
+3. In the permissions tab use the following configuration.
+```
+[
+    {
+        "AllowedHeaders": [
+            "Authorization"
+        ],
+        "AllowedMethods": [
+            "GET"
+        ],
+        "AllowedOrigins": [
+            "*"
+        ],
+        "ExposeHeaders": []
+    }
+]
+```
+4. In the policy tab, use the policy generator and generate an ```S3 Bucket Policy``` and allow all pricipals by typing a star. Take your ARN from before and paste it into the ARN box. Click add statement then generate your policy.
+5. Copy your policy into your bucket and add a ```/*``` to the end of the resource key and save.
+6. In the access control list tab, under public access click on everyone, select List Objects and save.
+7. Next search for IAM and create a new group with a name of your choosing.
+8. On the left handside, under "Access Management" click on Policies and create a policy. Go to the JSON tab and import a managed policy named ```AmazonS3FullAccess```. Get your S3 bucket ARN again and paste that in after "Resource", as a list (first the ARN, then also the ARN with a slash and star). Click "next tags" and then "next review". Give it any name and description. Click "create policy".
+9. Back in your Groups, click on the group you created, go to permissions and attach the policy you just created.(add permisions, attach policy).
+10. Under "Access Management" again, this time click on "Users" and add a user, give it programmatic access and click next. Add this user to your previously created group and download the CSV file at the end.
+11. You will need to update ```settings.py``` at the bottom of the file. Variables like ```AWS_STORAGE_BUCKET_NAME``` and ```AWS_S3_REGION_NAME``` need to match your bucket.
+
+
+Heroku Setup
+1. Create a new app using the dashboard on Heroku and select a region closest to you.
+2. In the Resources tab of your App, add Heroku Postgres to store your database tables.
+3. Add your Heroku app url to ```ALLOWED_HOSTS``` in ```settings.py```.
+4. Add the following veriables to your ```settings tab```
+```
+DATABASE_URL = This is prefilled for you.
+SECRET_KEY = Generate your own key at https://djecrety.ir/
+USE_AWS = True
+AWS_ACCESS_KEY_ID = From CSV downloaded earlier
+AWS_SECRET_ACCESS_KEY = From CSV downloaded earlier
+STRIPE_PUBLIC_KEY = We will fill this at the end
+STRIPE_SECRET_KEY = We will fill this at the end
+STRIPE_WH_SECRET = We will fill this at the end
+```
+5. In the ```Deploy``` tab, connect your GitHub and select the repo for this project.
+6. At the bottom you can enable automatic deploys or manually click ```Deploy Branch```.
+4. Once that's running. Using dj_database_url in ```settings.py``` use your Heroku Postgres URL from your Config Variables to connect to your new database.
+5. From your dev environment, use ```python3 manage.py migrate``` to create the necessary tables to run the app.
+6. Use ```python3 manage.py loaddata``` to load any fixtures.
+7. Create a superuser using ```python3 manage.py createsuperuser``` so you can log in to the admin panel.
+8. You can now go back to ```settings.py``` and switch your ```DATABASE``` settings back so it searches env variables for the Heroku Postgres URL again.
+
+Stripe Setup:
+1. Log in to your Stripe account and click "Developers" top right of the page.
+2. In the API Keys section on the left. Take note of your Publishable Key and Secret Key, use these to fill your Heroku config variables.
+3. Next click on Webhooks on the left and add an endpoint.
+4. Your URL should look like this "```your_heroku_app_url```/checkout/wh/"
+5. Add all events to your endpoint.
+6. Reveal your Signing Secret and add it to your Heroku config variable ```STRIPE_WH_SECRET```
+
+[View On Heroku](https://auto-tints.herokuapp.com/)
 
 # 10: Credits & Acknowledgments
-* 
+* First and foremost, the creator of Boutique Ado's walkthrough project could not have been any more useful as a resource to get this project to where it is today. Biggest credit of all to the creator at Code Institute.
+* [Django Documentation](https://docs.djangoproject.com/)
+* [Python Documentation](https://docs.python.org/)
 # 11: Repository Support
 For support please email at [xdshiftblue@gmail.com](mailto:xdshiftblue@gmail.com)
