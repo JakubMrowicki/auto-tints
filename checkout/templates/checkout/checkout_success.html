@@ -1,12 +1,13 @@
 {% extends "base.html" %}
 {% load static %}
+{% block head_title %}Thank You{% endblock %}
 
 {% block content %}
 <div class="container">
     <div class="row">
         <div class="col-12 mb-5">
             <h1>Thank You</h1>
-            <p>Your order was completed at {{ order.date }}.</p>
+            <p>Your order was completed at {{ order.date }}. An email confirmation will be sent soon.</p>
             <dl class="row">
                 <h3>Order Info</h3>
                 <dt class="col-sm-3">Order Number</dt>

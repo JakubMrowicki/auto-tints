@@ -1,5 +1,16 @@
 {% extends "base.html" %}
 {% load static %}
+{% block head_title %}
+    {% if products %}
+        {% if query %}
+            Results for: {{ query }}
+        {% else %}
+            Showing Products
+        {% endif %}
+    {% else %}
+        No Products Found
+{% endif %}
+{% endblock %}
 
 {% block content %}
 <div class="container">

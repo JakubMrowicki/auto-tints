@@ -1,5 +1,12 @@
 {% extends "base.html" %}
 {% load static %}
+{% block head_title %}
+{% if product %}
+    {{ product.name }}
+{% else %}
+    Product Not Found
+{% endif %}
+{% endblock %}
 
 {% block content %}
 <div class="container">
