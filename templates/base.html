@@ -5,7 +5,7 @@
 
 <head>
   {% block meta %}
-  <meta http-equiv="X-UA-Compativle" content="ie=edge">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   {% endblock %}
@@ -95,8 +95,8 @@
               </div>
             </form>
           </li>
-          <div class="dropdown mx-2">
-            <a class="btn btn-link dropdown-toggle" type="button" id="navbarDropdownUserControl"
+          <li class="dropdown mx-2">
+            <a class="btn btn-link dropdown-toggle" role="button" id="navbarDropdownUserControl"
               data-bs-toggle="dropdown" aria-expanded="false">
               <i class="fas fa-user fa-lg"></i>
             </a>
@@ -116,7 +116,7 @@
               <a class="dropdown-item" href="{% url 'account_signup' %}">New around here? Sign up</a>
               {% endif %}
             </div>
-          </div>
+          </li>
           <li class="list-inline-item">
             <a href="{% url 'view_cart' %}" title="Items in cart">
               <i class="fas fa-shopping-bag fa-lg position-relative">
@@ -135,7 +135,7 @@
   <nav class="navbar navbar-expand-lg navbar-light border-bottom d-lg-none">
     <div class="container-fluid">
       <a class="navbar-brand flex-grow-1" href="{% url 'home' %}">Auto-Tints</a>
-      <a href="{% url 'view_cart' %}" type="button" title="Items in cart" class="btn position-relative mx-3">
+      <a href="{% url 'view_cart' %}" role="button" title="Items in cart" class="btn position-relative mx-3">
         <i class="fas fa-shopping-bag fa-2x"></i>
         <span class="position-absolute top-0 end-0 badge rounded-pill bg-secondary
           {% if not cart_items %}d-none{% endif %}">{{ cart_items_count }} <span class="visually-hidden">items in
@@ -184,18 +184,36 @@
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarUserControls">
               {% if request.user.is_authenticated %}
-              <a class="dropdown-item text-center" href="{% url 'profile' %}">My Profile</a>
-              <div class="dropdown-divider"></div>
+              <li class="dropdown-item">
+                <a class="dropdown-item text-center" href="{% url 'profile' %}">My Profile</a>
+              </li>
+              <li class="dropdown-item">
+                <div class="dropdown-divider"></div>
+              </li>
               {% if request.user.is_superuser %}
-              <a class="dropdown-item text-center" href="{% url 'admin:index' %}">Admin Panel</a>
-              <a class="dropdown-item text-center" href="{% url 'add_product' %}">Add a Product</a>
-              <div class="dropdown-divider"></div>
+              <li class="dropdown-item">
+                <a class="dropdown-item text-center" href="{% url 'admin:index' %}">Admin Panel</a>
+              </li>
+              <li class="dropdown-item">
+                <a class="dropdown-item text-center" href="{% url 'add_product' %}">Add a Product</a>
+              </li>
+              <li class="dropdown-item">
+                <div class="dropdown-divider"></div>
+              </li>
               {% endif %}
-              <a class="dropdown-item text-center" href="{% url 'account_logout' %}">Sign out</a>
+              <li class="dropdown-item">
+                <a class="dropdown-item text-center" href="{% url 'account_logout' %}">Sign out</a>
+              </li>
               {% else %}
-              <a class="dropdown-item text-center" href="{% url 'account_login' %}">Log in</a>
-              <div class="dropdown-divider"></div>
-              <a class="dropdown-item text-center" href="{% url 'account_signup' %}">New around here? Sign up</a>
+              <li class="dropdown-item">
+                <a class="dropdown-item text-center" href="{% url 'account_login' %}">Log in</a>
+              </li>
+              <li class="dropdown-item">
+                <div class="dropdown-divider"></div>
+              </li>
+              <li class="dropdown-item">
+                <a class="dropdown-item text-center" href="{% url 'account_signup' %}">New around here? Sign up</a>
+              </li>
               {% endif %}
             </ul>
           </li>
@@ -203,7 +221,7 @@
         <form method="GET" action="{% url 'products' %}">
           <div class="input-group">
             <input type="text" class="form-control" placeholder="Search" {% if query %}value="{{ query }}"{% endif %} name="q" aria-describedby="search-button">
-            <button class="btn btn-outline-secondary" type="submit" id="search-button">
+            <button class="btn btn-outline-secondary" type="submit" id="search-button-mobile">
               <i class="fas fa-search"></i>
             </button>
           </div>
@@ -272,7 +290,7 @@
   </footer>
 
   {% block postloadjs %}
-  <script defer type="text/javascript">
+  <script>
     $('.toast').show();
   </script>
   {% endblock %}

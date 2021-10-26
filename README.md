@@ -233,7 +233,7 @@ This project is deployed to the public by using Heroku. This is how I did it.
 
 To deploy this app you will need an [AWS account](https://aws.amazon.com/), a [Heroku account](https://signup.heroku.com/login) and a [Stripe account](https://dashboard.stripe.com/register). You can follow the links to register with those service providers.
 
-Also, make sure you install all the app dependencies from ```requirements.txt``` and that no files such as the ```Procfile```are missing before you begin.
+Also, make sure you install all the app dependencies from ```requirements.txt``` and that no files such as the ```Procfile``` are missing before you begin.
 
 AWS Setup:
 1. Log in to your AWS account and search for S3.
@@ -302,5 +302,6 @@ Stripe Setup:
 * First and foremost, the creator of Boutique Ado's walkthrough project could not have been any more useful as a resource to get this project to where it is today. Biggest credit of all to the creator at Code Institute.
 * [Django Documentation](https://docs.djangoproject.com/)
 * [Python Documentation](https://docs.python.org/)
+* [AllAuth Documentation](https://django-allauth.readthedocs.io/)
 # 11: Repository Support
 For support please email at [xdshiftblue@gmail.com](mailto:xdshiftblue@gmail.com)
