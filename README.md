@@ -235,9 +235,9 @@ This project uses the following technologies:
 * Website was run through the Mobile-Friendly Test by Google and was deemed Mobile Friendly. To further test this, I opened the website on my phone as well as friends and co-workers phones.
     * [Google Mobile-Friendly Test](https://search.google.com/test/mobile-friendly/result?id=kQDvopK48p9ZjX_PgRgvqQ)
 * Validated HTML, CSS and JS using validators.
-* Checked that all links are working.
+* Checked that all links are working using [w3 Link Checker](https://validator.w3.org/checklink).
 * Ran style.css through [Autoprefixer](https://autoprefixer.github.io/) to add vendor prefixes.
-* [TESTING.md](https://github.com/JakubMrowicki/auto-tints/tree/main/TESTING.md) for more
+* [TESTING.md](https://github.com/JakubMrowicki/auto-tints/tree/main/TESTING.md) for more app specific testing.
 
 # 7: Problem Areas & Solutions
 * You could pin more than 5 entries if you pinned it upon creation with 5 pins already present.
