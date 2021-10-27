@@ -40,12 +40,16 @@ def edit_item(request, item_id):
             messages.success(request, f'Updated quantity \
                                         of {product.name} to {quantity}.')
             cart[item_id] = quantity
+        else:
+            messages.error(request, 'This item cannot be updated.')
 
     if request.POST.get('delete_button'):
         if item_id in list(cart.keys()):
             messages.success(request, f'Removed \
                                         {product.name} from your cart.')
             del cart[item_id]
+        else:
+            messages.error(request, 'This item cannot be deleted.')
 
     request.session['cart'] = cart
     return redirect(redirect_url)
