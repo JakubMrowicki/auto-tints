@@ -39,7 +39,7 @@ Viewing The Store:
 + 'A shopper: I want to view a list of product categories'
 + 'A shopper: I want to view a list of products in each category'
 + 'A shopper: I want to view product details'
-+ 'A shopper: I want to search & sort items'
++ 'A shopper: I want to search & sort items by category'
 + 'A shopper: I want to see my cart item total at all times'
 + 'A shopper: I want to see frequently asked questions'
 + 'A shopper: I want to see contact details for the store'
