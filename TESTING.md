@@ -20,13 +20,48 @@ auto_tints is the django main app which stores ```settings.py``` etc.
 ## What is cart?
 cart is a custom django app which handles the shopping cart on the store.
 
-## Tests
+## /cart/ Tests
+Test Description | Result | Comment
+--- | --- | ---
+Does it display items correctly? | Yes | All items are displayed correctly
+Is the total calculated correctly? | Yes | -
+
+## /cart/edit_item/<item_id> Tests
+Test Description | Result | Comment
+--- | --- | ---
+Does updating and deleting cart items work? | Yes | -
+Can you update or delete items not in cart? | No | Error message shows as intended.
+
+## /cart/add_to_cart/<item_id> Tests
+Test Description | Result | Comment
+--- | --- | ---
+Add to cart button works? | Yes | -
+Can you add the same item again? | Yes | Quantity increases
+Can you add an item that doesn't exist? | No | 404 page not found
 
 # checkout
 ## What is checkout?
 checkout is a custom django app which handles checkout procedures for the store.
 
-## Tests
+## /checkout/ Tests
+Test Description | Result | Comment
+--- | --- | ---
+Does it display items correctly? | Yes | All items are displayed correctly
+Is the total calculated correctly? | Yes | -
+Is the form displayed correctly? | Yes | -
+Does validation work? | Yes | -
+
+## /checkout/wh/ Tests
+Test Description | Result | Comment
+--- | --- | ---
+Is the order completed if checkout somehow fails? | Yes | The webhook will trigger the addition of the order
+Is the confirmation email sent to the user? | Yes | -
+
+## /checkout/success/<order_number> Tests
+Test Description | Result | Comment
+--- | --- | ---
+Is the order linked with the user? | Yes | Order is visible on the profile page.
+Do the details listed match the order? | Yes | -
 
 # home
 ## What is home?
