@@ -135,7 +135,7 @@ grand_total | DecimalField | Yes
 original_cart | TextField | Yes
 stripe_pid | CharField | Yes
 
-__'Order' Model__
+__'OrderLineItem' Model__
 key | type | required?
 --- | --- | ---
 order | ForeignKey | Yes
@@ -215,6 +215,14 @@ Black | #212529 | ![#212529](https://via.placeholder.com/15/212529/000000?text=+
     * View order history
     * View previous orders
 
+## Future Features/Changes
+I learned so much about Django thoughout this project but I really didn't give myself enough time to create something I was really proud of. I definitely want to create more with Django now that I'm more familiar with e-commerce websites and how their procedures work.
+
+Some features I would add are listed below:
+* Forum feature
+* Override the Django user model instead of creating a UserProfile model
+* Complete redesign
+
 # 5: Technologies Used
 This project uses the following technologies:
 * HTML5
@@ -224,6 +232,8 @@ This project uses the following technologies:
 * Python
 * Django
 * Postgres
+* AWS
+* Stripe
 * Bootstrap 5
 * FontAwesome Icons
 * Google Fonts
@@ -240,8 +250,10 @@ This project uses the following technologies:
 * [TESTING.md](https://github.com/JakubMrowicki/auto-tints/tree/main/TESTING.md) for more app specific testing.
 
 # 7: Problem Areas & Solutions
-* You could pin more than 5 entries if you pinned it upon creation with 5 pins already present.
-    * __Solution:__ I added a check in the backend to prevent this from happening, even if you get rid of the disabled attribute on the checkbox using inspect element.
+* I wanted to link to specific items in the FAQ page but I couldn't find a clear way to do so.
+    * __Solution:__ I added some javascript to handle the URL hash, if a hash is present it will open and scroll to the relevant collapse item.
+* Django doesn't have a form field with the ```type="tel"``` attribute and wouldn't let me change the attribute in the forms.py file.
+    * __Solution:__ I added some javascript to update the type from ```text``` to ```tel```.
 
 # 8: Code Validation
 HTML was Validated using the [W3 Validator](https://validator.w3.org/).
