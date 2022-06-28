@@ -5,7 +5,7 @@
 [View Project on Heroku](https://auto-tints.herokuapp.com/)
 
 
-The goal of this project is to create an __online store__ which offers automotive window tinting supplies and tools.
+The goal of this project is to create an online store which offers automotive window tinting supplies and tools.
 
 # Table of Contents
 1. [Overview/Description](#1-overviewdescription)
